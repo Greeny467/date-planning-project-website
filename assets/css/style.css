@@ -1,12 +1,13 @@
 /* Variables */
 :root {
+    /* Colors */
     --main-color: lightblue;
     --main-color-light: white;
     --main-color-dark: steelblue;
     --color2: ;
     --color3: ;
     --color4: ;
-    --main-border-color: ;
+    --main-border-color: black;
     --text-color-light: white;
     --text-color-dark: black;
 }
@@ -46,7 +47,6 @@ main #sideBar form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 25%;
     width: 60%;
     margin-top: 4vh;
 }
@@ -58,6 +58,7 @@ main #sideBar form input {
     outline: none;
     font-size: 1.05em;
     width: 100%;
+    margin: 15px 0px;
     background-color: ;
 }
 
@@ -67,6 +68,10 @@ main #sideBar form select {
     border-radius: 0.5em;
     outline: none;
     width: 100%;
+}
+
+main #sideBar form p {
+    margin-top: 10px;
 }
 
 
@@ -86,12 +91,12 @@ main #cardHolder {
 
     main #sideBar {
         width: 100%;
-        height: 30vh;
+        height: auto;
     }
 
     main #sideBar form {
         width: 80%;
-        height: 100%;
+        height: auto;
         margin-top: 0;
     }
 
