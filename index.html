@@ -7,9 +7,40 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    
-    
-
+    <header>
+        <h1></h1>
+    </header>
+        <main>
+            <section id="sideBar">
+                <form id="mainForm">
+                    <input type="text" id="userLocation">
+                    <select name="Distance to Travel" id="locationDistance">
+                        <option value="5-Miles"></option>
+                        <option value="10-Miles"></option>
+                        <option value="15-Miles"></option>
+                        <option value="20-Miles"></option>
+                        <option value="25-Miles"></option>
+                    </select>
+                    <select name="Number of Cards" id="cardCount">
+                        <option value="5"></option>
+                        <option value="10"></option>
+                        <option value="15"></option>
+                    </select>
+                    <select name="Indoor or Outdoor" id="setting">
+                        <option value="Both"></option>
+                        <option value="Indoor"></option>
+                        <option value="Outdoor"></option>
+                    </select>
+                    <input type="submit" id="mainSubmit">
+                </form>
+            </section>
+            <section id="cardHolder">
+                <div class="card">
+                    <section class="activityInfo"></section>
+                    <section class="mapVisual"></section>
+                </div>
+            </section>
+        </main>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
