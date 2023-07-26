@@ -1,0 +1,72 @@
+:root {
+    --main-color: lightblue;
+    --main-color-light: white;
+    --main-color-dark: steelblue;
+    --color2: ;
+    --color3: ;
+    --color4: ;
+    --main-border-color: ;
+    --text-color-light: white;
+    --text-color-dark: black;
+
+}
+
+* {
+    color: var(--text-dark)
+}
+
+header {
+    height: 8vh;
+    width: 100vw;
+    background-color: var(--main-color-dark);
+    color: var(--text-color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    height: 92vh;
+    width: 100vw;
+    display: flex;
+}
+
+main #sideBar {
+    width: 32%;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main #sideBar form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 60%;
+    margin-top: 4vh;
+}
+
+main #sideBar form input {
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    outline: none;
+    background-color: ;
+}
+
+main #sideBar form select {
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    outline: none;
+}
+
+
+
+main #cardHolder {
+    width: 68%;
+    background-color: var(--main-color-light);
+
+}
