@@ -1,3 +1,4 @@
+/* Variables */
 :root {
     --main-color: lightblue;
     --main-color-light: white;
@@ -10,6 +11,7 @@
     --text-color-dark: black;
 }
 
+/* Header */
 header {
     height: 8vh;
     width: 100vw;
@@ -21,12 +23,16 @@ header {
     user-select: none;
 }
 
+
+/* Main Selectors */
 main {
     height: 92vh;
     width: 100vw;
     display: flex;
 }
 
+
+/* Sidebar */
 main #sideBar {
     width: 32%;
     background-color: var(--main-color);
@@ -50,6 +56,8 @@ main #sideBar form input {
     border: none;
     border-radius: 0.5em;
     outline: none;
+    font-size: 1.05em;
+    width: 100%;
     background-color: ;
 }
 
@@ -58,10 +66,50 @@ main #sideBar form select {
     border: none;
     border-radius: 0.5em;
     outline: none;
+    width: 100%;
 }
 
+
+/* Cardholder */
 main #cardHolder {
     width: 68%;
     background-color: var(--main-color-light);
 
+}
+
+/* Small Screen and Mobile friendly CSS */
+
+@media screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    main #sideBar {
+        width: 100%;
+        height: 30vh;
+    }
+
+    main #sideBar form {
+        width: 80%;
+        height: 100%;
+        margin-top: 0;
+    }
+
+    main #sideBar form input {
+        font-size: 1.2em;
+    }
+
+    main #sideBar form select {
+        font-size: 1.2em;
+    }
+
+    main #cardHolder {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    main #sideBar form {
+        width: 90%;
+    }
 }
