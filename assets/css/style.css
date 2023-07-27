@@ -4,9 +4,9 @@
     --main-color: lightblue;
     --main-color-light: white;
     --main-color-dark: steelblue;
-    --color2: ;
+    --color2: rgb(0, 64, 255);
     --color3: ;
-    --color4: ;
+    --color4: grey;
     --main-border-color: black;
     --text-color-light: white;
     --text-color-dark: black;
@@ -27,15 +27,19 @@ header {
 
 /* Main Selectors */
 main {
-    height: 92vh;
+    min-height: 92vh;
     width: 100vw;
     display: flex;
 }
 
+select option {
+    font: 400 1.1em Arial;
+}
 
 /* Sidebar */
 main #sideBar {
-    width: 32%;
+    width: 28%;
+    min-height: auto;
     background-color: var(--main-color);
     display: flex;
     flex-direction: column;
@@ -49,6 +53,7 @@ main #sideBar form {
     justify-content: space-evenly;
     width: 60%;
     margin-top: 4vh;
+    font: 400 1.2em Arial;
 }
 
 main #sideBar form input {
@@ -68,18 +73,75 @@ main #sideBar form select {
     border-radius: 0.5em;
     outline: none;
     width: 100%;
+    font: 400 1em Arial;
 }
 
 main #sideBar form p {
     margin-top: 10px;
 }
 
+main #sideBar form #userLocation:hover {
+    border: 1px inset var(--main-border-color);
+}
+
+main #sideBar form #userLocation:focus {
+    border: 1px inset var(--main-border-color);
+}
+
+main #sideBar form #mainSubmit {
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    outline: none;
+    font-size: 1.05em;
+    width: 100%;
+    margin: 15px 0px;
+    background-color: var(--main-color-dark);
+    color: var(--text-color-light);
+    cursor: pointer;
+}
+
+main #sideBar form #mainSubmit:hover {
+    background-color: var(--color2);
+}
+
+main #sideBar form #mainSubmit:active {
+    background-color: var(--color4);
+}
+
 
 /* Cardholder */
 main #cardHolder {
-    width: 68%;
+    width: 72%;
+    padding: 2% 2% 0 2%;
     background-color: var(--main-color-light);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: auto;
+}
 
+main #cardHolder .card {
+    width: 40%;
+    height: 25vh;
+    min-height: 300px;
+    min-width: 500px;
+    margin: 1%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background-color: var(--color4);
+    color: var(--text-color-light);
+    transition: opacity 0.5s ease-in-out, scale 0.5s ease-in-out;
+}
+
+main #cardHolder .card:hover {
+    scale: 1.1;
+}
+
+main #cardHolder:has(.card:hover) .card:not(:hover) {
+    opacity: 0.5;
+    scale: 0.9;
 }
 
 /* Small Screen and Mobile friendly CSS */
@@ -111,10 +173,33 @@ main #cardHolder {
     main #cardHolder {
         width: 100%;
     }
+
+    main #cardHolder .card {
+        width: 90%;
+        min-height: 300px;
+        min-width: 300px;
+        margin: 2% 5%;
+    }
+    
 }
 
 @media screen and (max-width: 425px) {
     main #sideBar form {
         width: 90%;
+    }
+
+    main #sideBar form input {
+        font-size: 1.4em;
+    }
+
+    main #sideBar form select {
+        font-size: 1.4em;
+    }
+
+    main #cardHolder .card {
+        width: 90%;
+        min-height: 300px;
+        min-width: 300px;
+        margin: 2% 5%;
     }
 }
