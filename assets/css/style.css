@@ -51,6 +51,8 @@ main #sideBar form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    position: sticky;
+    top: 5px;
     width: 60%;
     margin-top: 4vh;
     font: 400 1.2em Arial;
@@ -122,10 +124,10 @@ main #cardHolder {
 }
 
 main #cardHolder .card {
-    width: 40%;
+    width: 30%;
     height: 25vh;
     min-height: 300px;
-    min-width: 500px;
+    min-width: 400px;
     margin: 1%;
     border-radius: 10px;
     display: flex;
