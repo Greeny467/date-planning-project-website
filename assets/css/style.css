@@ -10,6 +10,8 @@
     --main-border-color: black;
     --text-color-light: white;
     --text-color-dark: black;
+    /* Fonts */
+    --main-font: Arial;
 }
 
 /* Header */
@@ -22,6 +24,7 @@ header {
     align-items: center;
     justify-content: center;
     user-select: none;
+    font: 1.3em var(--main-font);
 }
 
 
@@ -33,10 +36,10 @@ main {
 }
 
 select option {
-    font: 400 1.1em Arial;
+    font: 400 1.1em var(--main-font);
 }
 
-/* Sidebar */
+    /* Sidebar */
 main #sideBar {
     width: 28%;
     min-height: auto;
@@ -55,7 +58,7 @@ main #sideBar form {
     top: 5px;
     width: 60%;
     margin-top: 4vh;
-    font: 400 1.2em Arial;
+    font: 400 1.2em var(--main-font);
 }
 
 main #sideBar form input {
@@ -75,7 +78,7 @@ main #sideBar form select {
     border-radius: 0.5em;
     outline: none;
     width: 100%;
-    font: 400 1em Arial;
+    font: 400 1em var(--main-font);
 }
 
 main #sideBar form p {
@@ -112,7 +115,7 @@ main #sideBar form #mainSubmit:active {
 }
 
 
-/* Cardholder */
+    /* Cardholder */
 main #cardHolder {
     width: 72%;
     padding: 2% 2% 0 2%;
@@ -133,7 +136,8 @@ main #cardHolder .card {
     align-items: center;
     background-color: var(--color4);
     color: var(--text-color-light);
-    transition: opacity 0.4s ease-in-out, scale 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out, 
+                scale 0.5s ease-in-out;
 }
 
 main #cardHolder .card:hover {
