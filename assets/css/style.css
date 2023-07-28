@@ -5,7 +5,7 @@
     --main-color-light: #BC96E6;
     --main-color-dark: #210B2C;
     --color2: #D8B4E2;
-    --color3: rgb(21, 21, 21);
+    --color3: rgb(129, 129, 129);
     --color4: white;
     --main-border-color: hotpink;
     --text-color-light: white;
@@ -83,7 +83,7 @@ main #sideBar form select {
 }
 
 main #sideBar form p {
-    margin-top: 15px;
+    margin: 20px 0 2px 0;
 }
 
 main #sideBar form #userLocation:hover {
