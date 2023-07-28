@@ -186,6 +186,41 @@ main #cardHolder .card section:last-child {
 
 /* Small Screen and Mobile friendly CSS */
 
+@media screen and (max-height: 690px) {
+    main #sideBar {
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    main #cardHolder .card {
+        width: 45%;
+    }
+
+    main #sideBar form {
+        width: 80%;
+    }
+    
+}
+
+@media screen and (max-width: 1200px) {
+    main #sideBar {
+        width: 45%;
+    }
+
+    main #cardHolder {
+        justify-content: center;
+    }
+
+
+    main #cardHolder .card {
+        width: 75%;
+        align-self: center;
+        justify-self: center;
+    }
+    
+}
+
 @media screen and (max-width: 768px) {
     main {
         flex-direction: column;
