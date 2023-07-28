@@ -3,7 +3,7 @@
     /* Colors */
     --main-color: #55286F;
     --main-color-light: #BC96E6;
-    --main-color-dark: #210B2C;
+    --main-color-dark: #2c093d;
     --color2: #D8B4E2;
     --color3: rgb(129, 129, 129);
     --color4: white;
@@ -41,14 +41,15 @@ select option {
 
     /* Sidebar */
 main #sideBar {
-    width: 28%;
+    width: 23%;
     min-height: auto;
     background: var(--main-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     user-select: none;
-    color: var(--text-color-light)
+    color: var(--text-color-light);
+    border-right: 3px solid var(--color3);
 }
 
 main #sideBar form {
@@ -70,7 +71,6 @@ main #sideBar form input {
     font-size: 1.05em;
     width: 100%;
     margin: 15px 0px;
-    background: ;
 }
 
 main #sideBar form select {
@@ -124,9 +124,9 @@ main #sideBar form #mainSubmit:active {
 
     /* Cardholder */
 main #cardHolder {
-    width: 72%;
+    width: 77%;
     padding: 2% 2% 0 2%;
-    background: var(--color3);
+    background: url("../img/background-patern-1.png"), var(--color3);
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
@@ -179,6 +179,7 @@ main #cardHolder .card section {
     main #sideBar {
         width: 100%;
         height: auto;
+        border: none;
     }
 
     main #sideBar form {
