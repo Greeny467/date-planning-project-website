@@ -29,12 +29,21 @@
                         <option value="10">10</option>
                         <option value="15">15</option>
                     </select>
-                    <p>Indoor/Outdoor?</p>
-                    <select name="Indoor or Outdoor" id="setting">
-                        <option value="Both">Both</option>
-                        <option value="Indoor">Indoor</option>
-                        <option value="Outdoor">Outdoor</option>
+                    <p>Activty Catagory?</p>
+                    <select name="Activity Catagory" id="setting">
+                        <option value="Recreational">Recreational</option>
+                        <option value="Education">Education</option>
+                        <option value="Social">Social</option>
+                        <option value="DIY">DIY</option>
+                        <option value="Charity">Charity</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Relaxation">Relaxation</option>
+                        <option value="Music">Music</option>
+                        <option value="Busywork">Busywork</option>
                     </select>
+                    <p>Price Range?</p>
+                    <div id="priceLabels"><p>Low</p><p>High</p></div>
+                    <input type="range" min="1" max="100" value="50" class="slider" id="priceRange">
                     <input type="submit" id="mainSubmit">
                 </form>
             </section>
