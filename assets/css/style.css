@@ -49,7 +49,6 @@ main #sideBar {
     align-items: center;
     user-select: none;
     color: var(--text-color-light);
-    border-right: 3px solid var(--color3);
 }
 
 main #sideBar form {
@@ -71,6 +70,10 @@ main #sideBar form input {
     font-size: 1.05em;
     width: 100%;
     margin: 15px 0px;
+}
+
+main #sideBar form #priceRange {
+    padding: 0;
 }
 
 main #sideBar form select {
@@ -125,17 +128,18 @@ main #sideBar form #mainSubmit:active {
     /* Cardholder */
 main #cardHolder {
     width: 77%;
-    padding: 2% 2% 0 2%;
+    padding: 1% 1% 0 1%;
     background: url("../img/background-patern-1.png"), var(--color3);
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
+    border: 3px solid var(--color3);
 }
 
 
     /* Cards */
 main #cardHolder .card {
-    width: 30%;
+    width: 31%;
     height: 25vh;
     min-height: 300px;
     min-width: 400px;
@@ -167,6 +171,17 @@ main #cardHolder .card section {
     justify-content: center;
     align-items: center;
     background: var(--color4);
+    color: var(--text-color-dark);
+    font: 400 1.3em var(--main-font);
+}
+
+main #cardHolder .card section:first-child {
+    border-radius: 10px 0 0 10px;
+    /* border-right: 3px dashed var(--main-color); */
+}
+
+main #cardHolder .card section:last-child {
+    border-radius: 0 10px 10px 0;
 }
 
 /* Small Screen and Mobile friendly CSS */
@@ -179,7 +194,6 @@ main #cardHolder .card section {
     main #sideBar {
         width: 100%;
         height: auto;
-        border: none;
     }
 
     main #sideBar form {
