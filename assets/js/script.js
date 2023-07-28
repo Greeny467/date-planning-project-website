@@ -65,11 +65,14 @@ function submitForm(){
     }
     
 }   
-submitButton.addEventListener("click", function(){
+submitButton.addEventListener("click", function(event){
+    event.preventDefault()
     elementCount = cardHolder.children.length
+    console.log(elementCount)
     if (elementCount != 0){
         for(i = 0; i < elementCount; i++){
             cardHolder.firstChild.remove()
+            console.log("removed")
         }
     }
     submitForm()

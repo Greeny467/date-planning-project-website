@@ -110,9 +110,7 @@ main #sideBar form #mainSubmit:hover {
     background-color: var(--color2);
 }
 
-main #sideBar form #mainSubmit:active {
-    background-color: var(--color4);
-}
+
 
 
     /* Cardholder */
