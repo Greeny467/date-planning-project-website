@@ -3,7 +3,8 @@ var mainForm = document.querySelector("#mainForm")
 var userLocation = document.querySelector("#userLocation")
 var locationDistance = document.querySelector("#locationDistance")
 var cardCount = document.querySelector("#cardCount")
-var setting = document.querySelector("#setting")
+var category = document.querySelector("#setting")
+var priceRange = document.querySelector("#priceRange")
 var submitButton = document.querySelector("#mainSubmit")
 var cardHolder = document.querySelector("#cardHolder")
 
@@ -50,6 +51,21 @@ function getBoredURL(){
 
 function submitForm(){
     //get value from all form inputs
+    var urlLocation = userLocation.value
+    console.log(urlLocation)
+
+    var travelRange = locationDistance.value
+    console.log(travelRange)
+
+    var numOfCard = cardCount.value
+    console.log(numOfCard)
+
+    var activityCategory = category.value
+    console.log(activityCategory)
+
+    var range = priceRange.value
+    console.log(range)
+    
 
 
 
@@ -68,12 +84,11 @@ function submitForm(){
 submitButton.addEventListener("click", function(event){
     event.preventDefault()
     elementCount = cardHolder.children.length
-    console.log(elementCount)
-    if (elementCount != 0){
-        for(i = 0; i < elementCount; i++){
-            cardHolder.firstChild.remove()
-            console.log("removed")
-        }
+
+    //from chat gpt
+    while (cardHolder.firstChild) {
+        cardHolder.firstChild.remove();
+        console.log("removed");
     }
     submitForm()
 })
