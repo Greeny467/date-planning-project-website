@@ -2,10 +2,10 @@
 :root {
     /* Colors */
     --main-color: lightblue;
-    --main-color-light: white;
+    --main-color-light: rgb(228, 249, 255);
     --main-color-dark: steelblue;
     --color2: rgb(0, 64, 255);
-    --color3: ;
+    --color3: white;
     --color4: grey;
     --main-border-color: black;
     --text-color-light: white;
@@ -119,12 +119,14 @@ main #sideBar form #mainSubmit:active {
 main #cardHolder {
     width: 72%;
     padding: 2% 2% 0 2%;
-    background-color: var(--main-color-light);
+    background-color: var(--color3);
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
 }
 
+
+    /* Cards */
 main #cardHolder .card {
     width: 30%;
     height: 25vh;
@@ -147,6 +149,15 @@ main #cardHolder .card:hover {
 main #cardHolder:has(.card:hover) .card:not(:hover) {
     opacity: 0.5;
     scale: 0.9;
+}
+
+main #cardHolder .card section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Small Screen and Mobile friendly CSS */
@@ -189,6 +200,11 @@ main #cardHolder:has(.card:hover) .card:not(:hover) {
 }
 
 @media screen and (max-width: 425px) {
+
+    header {
+        font-size: 1em;
+    }
+
     main #sideBar form {
         width: 90%;
     }
