@@ -114,6 +114,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "9318514"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "dog park"
 
             }
             //14
@@ -195,6 +196,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "5262759"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "Movie theater"
 
             }
             //27
@@ -225,6 +227,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "5940465"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "park"
 
             }
             //32
@@ -314,6 +317,8 @@ function getBoredURL(category, price){
             else if (activityObject.key == "8979931"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "farmers market"
+
 
             }
             //46
@@ -390,6 +395,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "8503795"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "thrift shop"
             }
             else if (activityObject.key == "2352669"){
                 var atHome = "yes"
@@ -522,6 +528,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "6482790"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "music festival"
             }
             else if (activityObject.key == "2735499"){
                 var atHome = "yes"
@@ -582,6 +589,7 @@ function getBoredURL(category, price){
             else if (activityObject.key== "8750692"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "community center"
             }
             else if (activityObject.key== "9999999"){
                 var atHome = "no"
@@ -610,6 +618,7 @@ function getBoredURL(category, price){
             else if (activityObject.key== "1878070"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "food pantry"
             }
             else if (activityObject.key== "1592381"){
                 var atHome = "yes"
@@ -626,6 +635,7 @@ function getBoredURL(category, price){
             else if (activityObject.key== "6852505"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "running trail"
             }
             else if (activityObject.key== "9216391"){
                 var atHome = "no"
@@ -651,6 +661,7 @@ function getBoredURL(category, price){
             else if (activityObject.key== "8683473"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "basketball court"
             }
             else if (activityObject.key== "2742452"){
                 var atHome = "yes"
@@ -667,6 +678,7 @@ function getBoredURL(category, price){
             else if (activityObject.key== "4448913"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "Broadway production"
             }
             else if (activityObject.key== "3469378"){
                 var atHome = "yes"
@@ -687,6 +699,7 @@ function getBoredURL(category, price){
             else if (activityObject.key== "3149232"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "fishing lake"
             }
             else if (activityObject.key== "3141592"){
                 var atHome = "yes"
@@ -695,22 +708,27 @@ function getBoredURL(category, price){
             else if (activityObject.key== "4688012"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "yoga"
             }
             else if (activityObject.key== "5490351"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "museum"
             }
             else if (activityObject.key== "3305912"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "fun pictures"
             }
             else if (activityObject.key== "4748214"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "sunrise spots"
             }
             else if (activityObject.key== "4306710"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc  = "volleyball courts"
             }
             else if (activityObject.key== "5914292"){
                 var atHome = "yes"
@@ -939,6 +957,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "4150284"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc = "food bank"
             }
             else if (activityObject.key == "8731710"){
                 var atHome = "yes"
