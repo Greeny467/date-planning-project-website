@@ -939,6 +939,7 @@ function getBoredURL(category, price){
             else if (activityObject.key == "4150284"){
                 var atHome = "no"
                 var twoPerson = "yes"
+                var mapDesc = "food bank"
             }
             else if (activityObject.key == "8731710"){
                 var atHome = "yes"
