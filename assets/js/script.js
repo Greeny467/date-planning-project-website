@@ -29,17 +29,44 @@ var cardHolder = document.querySelector("#cardHolder")
 //          cardHolder.appendChild(createCard)
 //}
 
-function getBoredURL(){
-    var requestURL = "URL" + "input values"
-    // fetch(requestURL)
-    //      .then(function(response){
-    //          return JSON.parse(response)
-    //      })
-    //      .then(function(data){
-    //          var activityObject = data
-    //          return activityObject
-    //      })
+function getBoredURL(category, price){
+    var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
+    fetch(requestURL)
+        .then(function(response){
+            return response.json()
+        })
+        .then(function(data){
+            var activityObject = data
+            console.log(activityObject)
 
+
+            //Response filter, due to limited api versatility
+            if (activityObject.activity == "Learn Express.js"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+                
+            }
+            if (activityObject.activity == "Learn to greet someone in a new language"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.activity == "Learn how to play a new sport"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.activity == "Text a friend you haven't talked to in a long time"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            // 5-49
+
+            //50-99
+
+            //100-149
+
+            //149-196
+        })
+    
     //get maplocation and search up the activity on the map api in relation to location.
     //check if the locations shown are within the specified range.
     
@@ -60,22 +87,27 @@ function submitForm(){
     var numOfCard = cardCount.value
     console.log(numOfCard)
 
-    var activityCategory = category.value
+    var activityCategory = category.value.toLowerCase()
     console.log(activityCategory)
 
     var range = priceRange.value
     console.log(range)
     
-
+    var rangeModified = range / 100
 
 
     //reset all inputs to empty so user can search again
+    userLocation.value=""
+    locationDistance.value = ""
+    cardCount.value = ""
+    category.value = ""
+    priceRange.value = ""
 
 
-    var cardCountNum = 5
+    
 
-    for(i = 0; i < cardCountNum; i++){
-        //getBoredURL()
+    for(i = 0; i < numOfCard; i++){
+        getBoredURL(activityCategory, rangeModified)
 
         // createCard()
     }
@@ -85,7 +117,7 @@ submitButton.addEventListener("click", function(event){
     event.preventDefault()
     elementCount = cardHolder.children.length
 
-    //from chat gpt
+    //from chat gpt 
     while (cardHolder.firstChild) {
         cardHolder.firstChild.remove();
         console.log("removed");
