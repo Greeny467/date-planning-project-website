@@ -925,6 +925,7 @@ function getBoredURL(category, price){
 
             if (twoPerson == "yes"){
                 //check if activityObject is within the specified range
+                
                 if (ideaArray.includes(activityObject)){
                     getBoredURL(category, price)
                 }
