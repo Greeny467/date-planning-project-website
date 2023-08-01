@@ -974,7 +974,20 @@ function getBoredURL(category, price){
                     getBoredURL(category, price)
                 }
                 else {
-                    ideaArray.push(activityObject)
+                    if(atHome == "yes"){
+                        ideaArray.push(activityObject)
+                    }
+                    else if(atHome == "no"){
+                        var mapURL = "mapurl"
+                        fetch(mapURL)
+                            .then(function(response){
+                                return response.json()
+                            })
+                            .then(function(data){
+                                console.log(data)
+                            })
+                        }
+                    }
                 }
             }
             else{
