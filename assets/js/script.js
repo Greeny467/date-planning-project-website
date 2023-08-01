@@ -63,7 +63,206 @@ function getBoredURL(category, price){
             //50-99
 
             //100-149
-
+            if (activityObject.key== "9414706"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "8724324"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "8092359"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "5554174"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "6813070"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "8442249"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "4179309"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "8750692"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "9999999"){
+                var atHome = "no"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "1000000"){
+                var atHome = "no"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "8394738"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "4522866"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "3352474"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "4708863"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "1878070"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "1592381"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "6204657"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "3950821"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "6852505"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "9216391"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "5675880"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "1799120"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "2715253"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "2167064"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "8683473"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "2742452"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "6826029"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "8264223"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "4448913"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "3469378"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "8238918"){
+                var atHome = "no"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "3561421"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "4296813"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "3149232"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "3141592"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "4688012"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "5490351"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "3305912"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "4748214"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "4306710"){
+                var atHome = "no"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "5914292"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "2300257"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "8688620"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "6184514"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "3590127"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "7096020"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "5188388"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            if (activityObject.key== "5534113"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "9324336"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            if (activityObject.key== "9765530"){
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
             //149-196
         })
     
