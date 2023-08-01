@@ -59,7 +59,277 @@ function getBoredURL(category, price){
                 var twoPerson = "no"
             }
             // 5-49
+            //5
+            if (activityObject.key == "5881028"){
+                var atHome = "yes"
+                var twoPerson = "no"
 
+            }
+            //6
+            if (activityObject.key == "3136036"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+
+            }
+            //7
+            if (activityObject.key == "4981819"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+
+            }
+            //8
+            if (activityObject.key == "2095681"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //9
+            if (activityObject.key == "1382389"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //10
+            if (activityObject.key == "1408058"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+
+            }
+            //11
+            if (activityObject.key == "8125168"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //12
+            if (activityObject.key == "5665663"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+
+            }
+            //13
+            if (activityObject.key == "9318514"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //14
+            if (activityObject.key == "3699502"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //15
+            if (activityObject.key == "7114122"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //16
+            if (activityObject.key == "5092652"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //17
+            if (activityObject.key == "2581372"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //18
+            if (activityObject.key == "7526324"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //19
+            if (activityObject.key == "3136729"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //20
+            if (activityObject.key == "3192099"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //21
+            if (activityObject.key == "1668223"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //22
+            if (activityObject.key == "5920481"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //23
+            if (activityObject.key == "1505028"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //24
+            if (activityObject.key == "4290333"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //25
+            if (activityObject.key == "9212950"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+
+            }
+            //26
+            if (activityObject.key == "5262759"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //27
+            if (activityObject.key == "4614092"){
+                var atHome = "yes"
+                var twoPerson = "yes"
+
+            }
+            //28
+            if (activityObject.key == "6197243"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //29
+            if (activityObject.key == "6613330"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //30
+            if (activityObject.key == "7265395"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //31
+            if (activityObject.key == "5940465"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //32
+            if (activityObject.key == "1638604"){
+                var atHome = "no"
+                var twoPerson = "no"
+
+            }
+            //33
+            if (activityObject.key == "7806284"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //34
+            if (activityObject.key == "1093640"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //35
+            if (activityObject.key == "5590133"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //36
+            if (activityObject.key == "5947957"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //37
+            if (activityObject.key == "2211716"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //38
+            if (activityObject.key == "2237769"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //39
+            if (activityObject.key == "6925988"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //40
+            if (activityObject.key == "1017771"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //41
+            if (activityObject.key == "1488053"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //42
+            if (activityObject.key == "1432113"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //43
+            if (activityObject.key == "6509779"){
+                var atHome = "no"
+                var twoPerson = "no"
+
+            }
+            //44
+            if (activityObject.key == "3920096"){
+                var atHome = "no"
+                var twoPerson = "no"
+
+            }
+            //45
+            if (activityObject.key == "8979931"){
+                var atHome = "no"
+                var twoPerson = "yes"
+
+            }
+            //46
+            if (activityObject.key == "6553978"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //47
+            if (activityObject.key == "1947449"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //48
+            if (activityObject.key == "8631548"){
+                var atHome = "yes"
+                var twoPerson = "no"
+
+            }
+            //49
+            if (activityObject.key == "2055368"){
+                var atHome = "no"
+                var twoPerson = "no"
+
+            }
+        
             //50-99
 
             //100-149
