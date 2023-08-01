@@ -969,11 +969,25 @@ function getBoredURL(category, price){
 
             if (twoPerson == "yes"){
                 //check if activityObject is within the specified range
+                
                 if (ideaArray.includes(activityObject)){
                     getBoredURL(category, price)
                 }
                 else {
-                    ideaArray.push(activityObject)
+                    if(atHome == "yes"){
+                        ideaArray.push(activityObject)
+                    }
+                    else if(atHome == "no"){
+                        var mapURL = "mapurl"
+                        fetch(mapURL)
+                            .then(function(response){
+                                return response.json()
+                            })
+                            .then(function(data){
+                                console.log(data)
+                            })
+                        }
+                    }
                 }
             }
             else{
