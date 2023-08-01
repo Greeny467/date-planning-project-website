@@ -130,6 +130,7 @@ main #cardHolder {
     width: 77%;
     padding: 1% 1% 0 1%;
     background: url("../img/background-patern-1.png"), var(--color3);
+    background-attachment: fixed;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
@@ -186,7 +187,7 @@ main #cardHolder .card section:last-child {
 
 /* Small Screen and Mobile friendly CSS */
 
-@media screen and (max-height: 690px) {
+@media screen and (max-height: 530px) {
     main #sideBar {
         overflow: auto;
     }
@@ -214,7 +215,7 @@ main #cardHolder .card section:last-child {
 
 
     main #cardHolder .card {
-        width: 75%;
+        width: 80%;
         align-self: center;
         justify-self: center;
     }
