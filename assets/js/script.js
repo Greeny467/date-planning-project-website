@@ -8,6 +8,7 @@ var priceRange = document.querySelector("#priceRange")
 var submitButton = document.querySelector("#mainSubmit")
 var cardHolder = document.querySelector("#cardHolder")
 
+var ideaArray = []
 
 //function createCard(requestURL)
 
@@ -942,6 +943,22 @@ function getBoredURL(category, price){
             else if (activityObject.key == "8731710"){
                 var atHome = "yes"
                 var twoPerson = "yes"
+            }
+            else {
+                getBoredURL(category, price)
+            }
+
+            if (twoPerson == "yes"){
+                //check if activityObject is within the specified range
+                if (ideaArray.includes(activityObject)){
+                    getBoredURL(category, price)
+                }
+                else {
+                    ideaArray.push(activityObject)
+                }
+            }
+            else{
+                getBoredURL(category, price)
             }
         })
     
