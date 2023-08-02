@@ -1,966 +1,902 @@
-var sideBar = document.querySelector("#sideBar")
-var mainForm = document.querySelector("#mainForm")
-var userLocation = document.querySelector("#userLocation")
-var locationDistance = document.querySelector("#locationDistance")
-var cardCount = document.querySelector("#cardCount")
-var category = document.querySelector("#setting")
-var priceRange = document.querySelector("#priceRange")
-var submitButton = document.querySelector("#mainSubmit")
-var cardHolder = document.querySelector("#cardHolder")
+const sideBar = document.querySelector("#sideBar")
+const mainForm = document.querySelector("#mainForm")
+const userLocation = document.querySelector("#userLocation")
+const locationDistance = document.querySelector("#locationDistance")
+const cardCount = document.querySelector("#cardCount")
+const category = document.querySelector("#setting")
+const priceRange = document.querySelector("#priceRange")
+const submitButton = document.querySelector("#mainSubmit")
+const cardHolder = document.querySelector("#cardHolder")
 
 var keyArray = []
 var ideaArray = []
 var mapArray = []
 
-//function createCard(requestURL)
+mainForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-//         var createCard = document.createElement("div")
-//          createCard.className = "card"
+    // Clear existing cards
+    cardHolder.innerHTML = "";
 
-//          var cardInfo = document.createElement("section")
-//          cardInfo.className = "activityInfo"
-//          createCard.appendChild(cardInfo)
+    // Get the number of cards to generate
+    var cardCount = parseInt(document.getElementById("cardCount").value);
 
-//          Create h2 for activity name, p for description, h3 for cost
+    // Generate the specified number of cards
+    for (var i = 0; i < cardCount; i++) {
+        var createCard = document.createElement("div");
+        createCard.className = "card";
 
-//          var cardMap = document.createElement("section")
-//          cardMap.className = "mapVisual"
-//          createCard.appendChild(cardMap)
+        var cardInfo = document.createElement("section");
+        cardInfo.className = "activityInfo";
+        createCard.appendChild(cardInfo);
 
-//          create h3 for location name, img for map image, and p for any extra info
+        // Create h2 for activity name, p for description, h3 for cost
+        var activityName = document.createElement("h2");
+        activityName.textContent = "Activity Name";
+        cardInfo.appendChild(activityName);
 
-//          cardHolder.appendChild(createCard)
-//}
+        var activityDescription = document.createElement("p");
+        activityDescription.textContent = "Activity Description";
+        cardInfo.appendChild(activityDescription);
 
-function getBoredURL(category, price, userRange){
+        var activityCost = document.createElement("h3");
+        activityCost.textContent = "Activity Cost";
+        cardInfo.appendChild(activityCost);
+
+        var cardMap = document.createElement("section");
+        cardMap.className = "mapVisual";
+        createCard.appendChild(cardMap);
+
+        // Create h3 for location name, img for map image, and p for any extra info
+        var locationName = document.createElement("h3");
+        locationName.textContent = "Location Name";
+        cardMap.appendChild(locationName);
+
+        var mapImage = document.createElement("img");
+        mapImage.src = "https://via.placeholder.com/150";
+        cardMap.appendChild(mapImage);
+
+        var extraInfo = document.createElement("p");
+        extraInfo.textContent = "Extra Info";
+        cardMap.appendChild(extraInfo);
+
+        cardHolder.appendChild(createCard);
+    }
+});
+
+function getBoredURL(category, price, userRange) {
     var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
     fetch(requestURL)
-        .then(function(response){
+        .then(function (response) {
             return response.json()
         })
-        .then(function(data){
+        .then(function (data) {
             var activityObject = data
 
 
             //Response filter, due to limited api versatility
-            if (activityObject.key == "3943506"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-                
-            }
-            else if (activityObject.key == "4704256"){
+            if (activityObject.key == "3943506") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "5808228"){
+            else if (activityObject.key == "4704256") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "5808228") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "sports complex"
+                var mapDesc = "sports complex"
             }
-            else if (activityObject.key == "6081071"){
+            else if (activityObject.key == "6081071") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            // 5-49
-            //5
-            else if (activityObject.key == "5881028"){
+            else if (activityObject.key == "5881028") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "3136036") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "4981819") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "2095681") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1382389") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "animal shelter"
+            }
+            else if (activityObject.key == "1408058") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "8125168") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "5665663") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "9318514") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "dog park"
+            }
+            else if (activityObject.key == "3699502") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "7114122") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "5092652") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "2581372") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "7526324") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "nail salon"
+            }
+            else if (activityObject.key == "3136729") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "3192099") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1668223") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "5920481") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1505028") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "swimming pool"
+            }
+            else if (activityObject.key == "4290333") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "scenic drive"
+            }
+            else if (activityObject.key == "9212950") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "5262759") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "Movie theater"
+            }
+            else if (activityObject.key == "4614092") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "6197243") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "6613330") {
                 var atHome = "yes"
                 var twoPerson = "no"
 
             }
-            //6
-            else if (activityObject.key == "3136036"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-
-            }
-            //7
-            else if (activityObject.key == "4981819"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-
-            }
-            //8
-            else if (activityObject.key == "2095681"){
+            else if (activityObject.key == "7265395") {
                 var atHome = "yes"
                 var twoPerson = "no"
-
             }
-            //9
-            else if (activityObject.key == "1382389"){
+            else if (activityObject.key == "5940465") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "animal shelter"
-
+                var mapDesc = "park"
             }
-            //10
-            else if (activityObject.key == "1408058"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-
+            else if (activityObject.key == "1638604") {
+                var atHome = "no"
+                var twoPerson = "no"
             }
-            //11
-            else if (activityObject.key == "8125168"){
+            else if (activityObject.key == "7806284") {
                 var atHome = "yes"
                 var twoPerson = "no"
-
             }
-            //12
-            else if (activityObject.key == "5665663"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-
-            }
-            //13
-            else if (activityObject.key == "9318514"){
+            else if (activityObject.key == "1093640") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "dog park"
-
+                var mapDesc = "tennis court"
             }
-            //14
-            else if (activityObject.key == "3699502"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //15
-            else if (activityObject.key == "7114122"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //16
-            else if (activityObject.key == "5092652"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //17
-            else if (activityObject.key == "2581372"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //18
-            else if (activityObject.key == "7526324"){
+            else if (activityObject.key == "5590133") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "nail salon"
-
+                var mapDesc = "cafe, restaurant"
             }
-            //19
-            else if (activityObject.key == "3136729"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //20
-            else if (activityObject.key == "3192099"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //21
-            else if (activityObject.key == "1668223"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //22
-            else if (activityObject.key == "5920481"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //23
-            else if (activityObject.key == "1505028"){
+            else if (activityObject.key == "5947957") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "swimming pool"
-
+                var mapDesc = "ice rink"
             }
-            //24
-            else if (activityObject.key == "4290333"){
+            else if (activityObject.key == "2211716") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "scenic drive"
-
+                var mapDesc = "concert hall"
             }
-            //25
-            else if (activityObject.key == "9212950"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-
-            }
-            //26
-            else if (activityObject.key == "5262759"){
+            else if (activityObject.key == "2237769") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "Movie theater"
-
+                var mapDesc = "bar, nightclub"
             }
-            //27
-            else if (activityObject.key == "4614092"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-
-            }
-            //28
-            else if (activityObject.key == "6197243"){
+            else if (activityObject.key == "6925988") {
                 var atHome = "yes"
                 var twoPerson = "no"
-
             }
-            //29
-            else if (activityObject.key == "6613330"){
+            else if (activityObject.key == "1017771") {
                 var atHome = "yes"
                 var twoPerson = "no"
-
             }
-            //30
-            else if (activityObject.key == "7265395"){
+            else if (activityObject.key == "1488053") {
                 var atHome = "yes"
                 var twoPerson = "no"
-
             }
-            //31
-            else if (activityObject.key == "5940465"){
+            else if (activityObject.key == "1432113") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "6509779") {
+                var atHome = "no"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "3920096") {
+                var atHome = "no"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "8979931") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "park"
-
+                var mapDesc = "farmers market"
             }
-            //32
-            else if (activityObject.key == "1638604"){
+            else if (activityObject.key == "6553978") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1947449") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "8631548") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "2055368") {
                 var atHome = "no"
                 var twoPerson = "no"
 
             }
-            //33
-            else if (activityObject.key == "7806284"){
+            else if (activityObject.key == "9364041") {
                 var atHome = "yes"
                 var twoPerson = "no"
-
             }
-            //34
-            else if (activityObject.key == "1093640"){
+            else if (activityObject.key == "1162360") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "8364626") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1934228") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "tennis court"
-
+                var mapDesc = "garden store"
             }
-            //35
-            else if (activityObject.key == "5590133"){
+            else if (activityObject.key == "9026787") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "6596257") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "3141417") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "4124860") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "8557562") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "4565537") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "1718657") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "8503795") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "cafe, restaurant"
-
+                var mapDesc = "thrift shop"
             }
-            //36
-            else if (activityObject.key == "5947957"){
+            else if (activityObject.key == "2352669") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "4894697") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "ice rink"
-
+                var mapDesc = "park, trail"
             }
-            //37
-            else if (activityObject.key == "2211716"){
+            else if (activityObject.key == "3456114") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "concert hall"
-
+                var mapDesc = "home decor store"
             }
-            //38
-            else if (activityObject.key == "2237769"){
+            else if (activityObject.key == "4101229") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "2896176") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "6301585") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "8321894") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "6808057") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "7023703") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "8731971") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "8926492") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "2790297") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "1645485") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "4809815") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "4379552") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "6778219") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "7091374") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "4387026") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "bar, nightclub"
-
+                var mapDesc = "gym"
             }
-            //39
-            else if (activityObject.key == "6925988"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //40
-            else if (activityObject.key == "1017771"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //41
-            else if (activityObject.key == "1488053"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //42
-            else if (activityObject.key == "1432113"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //43
-            else if (activityObject.key == "6509779"){
-                var atHome = "no"
-                var twoPerson = "no"
-
-            }
-            //44
-            else if (activityObject.key == "3920096"){
-                var atHome = "no"
-                var twoPerson = "no"
-
-            }
-            //45
-            else if (activityObject.key == "8979931"){
+            else if (activityObject.key == "6693574") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "farmers market"
-
-
+                var mapDesc = "restaurant"
             }
-            //46
-            else if (activityObject.key == "6553978"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //47
-            else if (activityObject.key == "1947449"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //48
-            else if (activityObject.key == "8631548"){
-                var atHome = "yes"
-                var twoPerson = "no"
-
-            }
-            //49
-            else if (activityObject.key == "2055368"){
-                var atHome = "no"
-                var twoPerson = "no"
-
-            }
-        
-            //50-99
-            else if (activityObject.key == "9364041"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "1162360"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "8364626"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "1934228"){
-                var atHome = "no"
-                var twoPerson = "yes"
-                var mapDesc  = "garden store"
-            }
-            else if (activityObject.key == "9026787"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "6596257"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "3141417"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "4124860"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "8557562"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "4565537"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "1718657"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "8503795"){
-                var atHome = "no"
-                var twoPerson = "yes"
-                var mapDesc  = "thrift shop"
-            }
-            else if (activityObject.key == "2352669"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "4894697"){
-                var atHome = "no"
-                var twoPerson = "yes"
-                var mapDesc  = "park, trail"
-            }
-            else if (activityObject.key == "3456114"){
-                var atHome = "no"
-                var twoPerson = "yes"
-                var mapDesc  = "home decor store"
-            }
-            else if (activityObject.key == "4101229"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "2896176"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "6301585"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "8321894"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "6808057"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "7023703"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "8731971"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "8926492"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "2790297"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "1645485"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "4809815"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "4379552"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "6778219"){
-                var atHome = "yes"
-                var twoPerson = "no"
-            }
-            else if (activityObject.key == "7091374"){
-                var atHome = "yes"
-                var twoPerson = "yes"
-            }
-            else if (activityObject.key == "4387026"){
-                var atHome = "no"
-                var twoPerson = "yes"
-                var mapDesc  = "gym"
-            }
-            else if (activityObject.key == "6693574"){
-                var atHome = "no"
-                var twoPerson = "yes"
-                var mapDesc  = "restaurant"
-            }
-            else if (activityObject.key == "8344539"){
+            else if (activityObject.key == "8344539") {
                 var atHome = "no"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "4558850"){
+            else if (activityObject.key == "4558850") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "concert venue"
+                var mapDesc = "concert venue"
             }
-            else if (activityObject.key == "8253550"){
+            else if (activityObject.key == "8253550") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "library"
+                var mapDesc = "library"
             }
-            else if (activityObject.key == "5585829"){
+            else if (activityObject.key == "5585829") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "escape room"
+                var mapDesc = "escape room"
             }
-            else if (activityObject.key == "9072906"){
+            else if (activityObject.key == "9072906") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "karaoke bar"
+                var mapDesc = "karaoke bar"
             }
-            else if (activityObject.key == "4877086"){
+            else if (activityObject.key == "4877086") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "1288934"){
+            else if (activityObject.key == "1288934") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "8832605"){
+            else if (activityObject.key == "8832605") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "6613428"){
+            else if (activityObject.key == "6613428") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "3818400"){
+            else if (activityObject.key == "3818400") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "8779876"){
+            else if (activityObject.key == "8779876") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "6482790"){
+            else if (activityObject.key == "6482790") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "music festival"
+                var mapDesc = "music festival"
             }
-            else if (activityObject.key == "2735499"){
+            else if (activityObject.key == "2735499") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "5881647"){
+            else if (activityObject.key == "5881647") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "9924423"){
+            else if (activityObject.key == "9924423") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "9366464"){
+            else if (activityObject.key == "9366464") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "8081693"){
+            else if (activityObject.key == "8081693") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "5554727"){
+            else if (activityObject.key == "5554727") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-
-            //100-149
-            else if (activityObject.key== "9414706"){
+            else if (activityObject.key == "9414706") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "8724324"){
+            else if (activityObject.key == "8724324") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "hiking trail"
+                var mapDesc = "hiking trail"
             }
-            else if (activityObject.key== "8092359"){
+            else if (activityObject.key == "8092359") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "5554174"){
+            else if (activityObject.key == "5554174") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "6813070"){
+            else if (activityObject.key == "6813070") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "park, picnic area"
+                var mapDesc = "park, picnic area"
             }
-            else if (activityObject.key== "8442249"){
+            else if (activityObject.key == "8442249") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "4179309"){
+            else if (activityObject.key == "4179309") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "8750692"){
+            else if (activityObject.key == "8750692") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "community center"
+                var mapDesc = "community center"
             }
-            else if (activityObject.key== "9999999"){
+            else if (activityObject.key == "9999999") {
                 var atHome = "no"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "1000000"){
+            else if (activityObject.key == "1000000") {
                 var atHome = "no"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "8394738"){
+            else if (activityObject.key == "8394738") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "4522866"){
+            else if (activityObject.key == "4522866") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "3352474"){
+            else if (activityObject.key == "3352474") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "4708863"){
+            else if (activityObject.key == "4708863") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "1878070"){
+            else if (activityObject.key == "1878070") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "food pantry"
+                var mapDesc = "food pantry"
             }
-            else if (activityObject.key== "1592381"){
+            else if (activityObject.key == "1592381") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "6204657"){
+            else if (activityObject.key == "6204657") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "3950821"){
+            else if (activityObject.key == "3950821") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "6852505"){
+            else if (activityObject.key == "6852505") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "running trail"
+                var mapDesc = "running trail"
             }
-            else if (activityObject.key== "9216391"){
+            else if (activityObject.key == "9216391") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "hardware store"
+                var mapDesc = "hardware store"
             }
-            else if (activityObject.key== "5675880"){
+            else if (activityObject.key == "5675880") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "1799120"){
+            else if (activityObject.key == "1799120") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "2715253"){
+            else if (activityObject.key == "2715253") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "2167064"){
+            else if (activityObject.key == "2167064") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "8683473"){
+            else if (activityObject.key == "8683473") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "basketball court"
+                var mapDesc = "basketball court"
             }
-            else if (activityObject.key== "2742452"){
+            else if (activityObject.key == "2742452") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "6826029"){
+            else if (activityObject.key == "6826029") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "8264223"){
+            else if (activityObject.key == "8264223") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "4448913"){
+            else if (activityObject.key == "4448913") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "Broadway production"
+                var mapDesc = "Broadway production"
             }
-            else if (activityObject.key== "3469378"){
+            else if (activityObject.key == "3469378") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "8238918"){
+            else if (activityObject.key == "8238918") {
                 var atHome = "no"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "3561421"){
+            else if (activityObject.key == "3561421") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "4296813"){
+            else if (activityObject.key == "4296813") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "3149232"){
+            else if (activityObject.key == "3149232") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "fishing lake"
+                var mapDesc = "fishing lake"
             }
-            else if (activityObject.key== "3141592"){
+            else if (activityObject.key == "3141592") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "4688012"){
+            else if (activityObject.key == "4688012") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "yoga"
+                var mapDesc = "yoga"
             }
-            else if (activityObject.key== "5490351"){
+            else if (activityObject.key == "5490351") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "museum"
+                var mapDesc = "museum"
             }
-            else if (activityObject.key== "3305912"){
+            else if (activityObject.key == "3305912") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "fun pictures"
+                var mapDesc = "fun pictures"
             }
-            else if (activityObject.key== "4748214"){
+            else if (activityObject.key == "4748214") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "sunrise spots"
+                var mapDesc = "sunrise spots"
             }
-            else if (activityObject.key== "4306710"){
+            else if (activityObject.key == "4306710") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "volleyball courts"
+                var mapDesc = "volleyball courts"
             }
-            else if (activityObject.key== "5914292"){
+            else if (activityObject.key == "5914292") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "2300257"){
+            else if (activityObject.key == "2300257") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "8688620"){
+            else if (activityObject.key == "8688620") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "6184514"){
+            else if (activityObject.key == "6184514") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "3590127"){
+            else if (activityObject.key == "3590127") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "7096020"){
+            else if (activityObject.key == "7096020") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "5188388"){
+            else if (activityObject.key == "5188388") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key== "5534113"){
+            else if (activityObject.key == "5534113") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "9324336"){
+            else if (activityObject.key == "9324336") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key== "9765530"){
+            else if (activityObject.key == "9765530") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            //149-196
-            else if (activityObject.key == "6706598"){
-                var atHome = "yes"
-                var twoPerson ="no"
-            }
-            else if (activityObject.key == "4151544"){
-                var atHome = "yes"
-                var twoPerson ="no"
-            }
-            else if (activityObject.key == "1129748"){
+            else if (activityObject.key == "6706598") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "1942393"){
+            else if (activityObject.key == "4151544") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1129748") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "1942393") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "tree nursery"
+                var mapDesc = "tree nursery"
             }
-            else if (activityObject.key == "7687030"){
+            else if (activityObject.key == "7687030") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2850593"){
+            else if (activityObject.key == "2850593") {
                 var atHome = "yes"
-                var twoPerson ="no"
+                var twoPerson = "no"
             }
-            else if (activityObject.key == "8061754"){
+            else if (activityObject.key == "8061754") {
                 var atHome = "yes"
-                var twoPerson ="yes"
+                var twoPerson = "yes"
             }
-            else if (activityObject.key == "5319204"){
-                var atHome = "no"
-                var twoPerson ="yes"
-                var mapDesc  = "restaurant"
-            }
-            else if (activityObject.key == "9937387"){
-                var atHome = "yes"
-                var twoPerson ="yes"
-            }
-            else if (activityObject.key == "8159356"){
+            else if (activityObject.key == "5319204") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc  = "park"
+                var mapDesc = "restaurant"
             }
-            else if (activityObject.key == "1572120"){
+            else if (activityObject.key == "9937387") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "8159356") {
+                var atHome = "no"
+                var twoPerson = "yes"
+                var mapDesc = "park"
+            }
+            else if (activityObject.key == "1572120") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "3491470"){
-                var atHome = "yes"
-                var twoPerson ="yes"
-            }
-            else if (activityObject.key == "7154873"){
+            else if (activityObject.key == "3491470") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2430066"){
+            else if (activityObject.key == "7154873") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "2430066") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "9303608"){
+            else if (activityObject.key == "9303608") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "1770521"){
+            else if (activityObject.key == "1770521") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "8033599"){
-                var atHome = "yes"
-                var twoPerson ="yes"
-            }
-            else if (activityObject.key == "9660022"){
+            else if (activityObject.key == "8033599") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2062010"){
+            else if (activityObject.key == "9660022") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "6098037"){
+            else if (activityObject.key == "2062010") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "9714586"){
+            else if (activityObject.key == "6098037") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "3151646"){
+            else if (activityObject.key == "9714586") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "6378359"){
+            else if (activityObject.key == "3151646") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "3646173"){
-                var atHome = "yes"
-                var twoPerson ="yes"
-            }
-            else if (activityObject.key == "4286250"){
+            else if (activityObject.key == "6378359") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "1303906"){
+            else if (activityObject.key == "3646173") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "9149470"){
+            else if (activityObject.key == "4286250") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2360432"){
+            else if (activityObject.key == "1303906") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "9149470") {
+                var atHome = "yes"
+                var twoPerson = "yes"
+            }
+            else if (activityObject.key == "2360432") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "4266522"){
+            else if (activityObject.key == "4266522") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "5322987"){
+            else if (activityObject.key == "5322987") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "3954882"){
+            else if (activityObject.key == "3954882") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "9081214"){
+            else if (activityObject.key == "9081214") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "9008639"){
+            else if (activityObject.key == "9008639") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "8827573"){
+            else if (activityObject.key == "8827573") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "8203595"){
+            else if (activityObject.key == "8203595") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "9908721"){
+            else if (activityObject.key == "9908721") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "8550768"){
+            else if (activityObject.key == "8550768") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2565076"){
+            else if (activityObject.key == "2565076") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2277801"){
+            else if (activityObject.key == "2277801") {
                 var atHome = "yes"
                 var twoPerson = "no"
             }
-            else if (activityObject.key == "4940907"){
+            else if (activityObject.key == "4940907") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "6825484"){
-                var atHome ="yes"
-                var twoPerson ="yes"
-            }
-            else if (activityObject.key == "5977626"){
+            else if (activityObject.key == "6825484") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "7556665"){
+            else if (activityObject.key == "5977626") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "3621244"){
+            else if (activityObject.key == "7556665") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
-            else if (activityObject.key == "2526437"){
+            else if (activityObject.key == "3621244") {
                 var atHome = "yes"
-                var twoPerson ="no"
+                var twoPerson = "yes"
             }
-            else if (activityObject.key == "4150284"){
+            else if (activityObject.key == "2526437") {
+                var atHome = "yes"
+                var twoPerson = "no"
+            }
+            else if (activityObject.key == "4150284") {
                 var atHome = "no"
                 var twoPerson = "yes"
                 var mapDesc = "food bank"
             }
-            else if (activityObject.key == "8731710"){
+            else if (activityObject.key == "8731710") {
                 var atHome = "yes"
                 var twoPerson = "yes"
             }
@@ -968,7 +904,7 @@ function getBoredURL(category, price, userRange){
                 getBoredURL(category, price, userRange)
             }
 
-            if (twoPerson == "yes"){
+            if (twoPerson == "yes") {
                 //check if activityObject is within the specified range
                 
                 if (keyArray.includes(activityObject.key)){
@@ -986,10 +922,10 @@ function getBoredURL(category, price, userRange){
                         var lon = -111.7495
                         var mapURL = "https://api.mapbox.com/search/searchbox/v1/suggest?q=" + mapDesc + "&access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA&session_token=UUIDv4&origin=" + lon + "," + lat
                         fetch(mapURL)
-                            .then(function(response){
+                            .then(function (response) {
                                 return response.json()
                             })
-                            .then(function(data){
+                            .then(function (data) {
                                 console.log(data)
                                 var apiResponse = data.suggestions[1]
                                 var milesDistance = apiResponse.distance / 1609.34
@@ -999,7 +935,7 @@ function getBoredURL(category, price, userRange){
                                     distance: milesDistance,
                                     travelTime: travelTime,
                                     location: where
-                                }
+                            }
 
                                 if (apiResponse.feature_type != "poi"){
                                     apiResponse = data.suggestions[2]
@@ -1009,14 +945,14 @@ function getBoredURL(category, price, userRange){
 
                                     if (apiResponse.feature_type!= "poi"){
                                         getBoredURL(category, price, userRange)
-                                    }
+                                }
                                     else{
                                         keyArray.push(activityObject.key)
                                         ideaArray.push(activityObject)
                                         mapArray.push(mapObject)
-                                    }
                                 }
-                                else{
+                            }
+                                else {
                                     keyArray.push(activityObject.key)
                                     ideaArray.push(activityObject)
                                     mapArray.push(mapObject)
@@ -1032,17 +968,17 @@ function getBoredURL(category, price, userRange){
                 getBoredURL(category, price)
             }
         })
-    
+}
     //get maplocation and search up the activity on the map api in relation to location.
     //check if the locations shown are within the specified range.
-    
+
     //if(locationsInRange == 0){
     //      getBoredURL()    
     //}
 
-}
 
-function submitForm(){
+
+function submitForm() {
     //get value from all form inputs
     var urlLocation = userLocation.value
 
@@ -1053,28 +989,28 @@ function submitForm(){
     var activityCategory = category.value.toLowerCase()
 
     var range = priceRange.value
-    
+
     var rangeModified = range / 100
 
 
     //reset all inputs to empty so user can search again
-    userLocation.value=""
+    userLocation.value = ""
     locationDistance.value = ""
     cardCount.value = ""
     category.value = ""
     priceRange.value = ""
 
 
-    
 
-    for(i = 0; i < numOfCard; i++){
+
+    for (i = 0; i < numOfCard; i++) {
         getBoredURL(activityCategory, rangeModified, travelRange)
         // createCard()
     }
     console.log(ideaArray)
-    console.log(mapArray)
-}   
-submitButton.addEventListener("click", function(event){
+console.log(mapArray)
+}
+submitButton.addEventListener("click", function (event) {
     event.preventDefault()
     elementCount = cardHolder.children.length
 
