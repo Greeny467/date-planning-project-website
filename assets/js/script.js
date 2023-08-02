@@ -902,6 +902,7 @@ function getBoredURL(category, price, userRange) {
                 
                 if (keyArray.includes(activityObject.key)){
                     getBoredURL(category, price, userRange)
+                    return
                 }
                 else {
 
@@ -920,27 +921,55 @@ function getBoredURL(category, price, userRange) {
                             .then(function (data) {
                                 console.log(data)
                                 var apiResponse = data.suggestions[1]
+                                var name = apiResponse.name
                                 var milesDistance = apiResponse.distance / 1609.34
                                 var travelTime = apiResponse.eta 
                                 var where = apiResponse.full_address
+                
                                 var mapObject = {
+                                    name: name,
                                     distance: milesDistance,
                                     travelTime: travelTime,
                                     location: where
                                 }
-
+                                
                                 if (apiResponse.feature_type != "poi"){
                                     apiResponse = data.suggestions[2]
                                     milesDistance = apiResponse.distance / 1609
                                     travelTime = apiResponse.eta
                                     where = apiResponse.full_address
 
+                                    mapObject = {
+                                        name: name,
+                                        distance: milesDistance,
+                                        travelTime: travelTime,
+                                        location: where
+                                    }
+
                                     if (apiResponse.feature_type!= "poi"){
-                                        getBoredURL(category, price, userRange)
+                                        apiResponse = data.suggestions[3]
+                                        milesDistance = apiResponse.distance / 1609
+                                        travelTime = apiResponse.eta
+                                        where = apiResponse.full_address
+
+                                        mapObject = {
+                                            name: name,
+                                            distance: milesDistance,
+                                            travelTime: travelTime,
+                                            location: where
+                                        }
+
+                                        if(apiResponse.feature_type!="poi"){
+                                            console.log("try again")
+                                            activityObject = ""
+                                            getBoredURL(category, price, userRange)
+                                            return
+                                        }    
                                     }
                                     else{
                                         if(milesDistance > userRange){
                                             getBoredURL(category, price, userRange)
+                                            return
                                         }
                                         else{
                                             keyArray.push(activityObject.key)
@@ -951,6 +980,7 @@ function getBoredURL(category, price, userRange) {
                                 }
                                 if(milesDistance > userRange){
                                     getBoredURL(category, price, userRange)
+                                    return
                                 }
                                 else{
                                     keyArray.push(activityObject.key)
