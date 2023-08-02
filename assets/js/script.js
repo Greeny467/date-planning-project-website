@@ -902,7 +902,6 @@ function getBoredURL(category, price, userRange) {
                 
                 if (keyArray.includes(activityObject.key)){
                     getBoredURL(category, price, userRange)
-                    console.log("is here")
                 }
                 else {
 
@@ -928,7 +927,7 @@ function getBoredURL(category, price, userRange) {
                                     distance: milesDistance,
                                     travelTime: travelTime,
                                     location: where
-                            }
+                                }
 
                                 if (apiResponse.feature_type != "poi"){
                                     apiResponse = data.suggestions[2]
@@ -938,18 +937,25 @@ function getBoredURL(category, price, userRange) {
 
                                     if (apiResponse.feature_type!= "poi"){
                                         getBoredURL(category, price, userRange)
-                                }
+                                    }
                                     else{
-                                        keyArray.push(activityObject.key)
-                                        activityObject.mapInfo = mapObject
-                                        ideaArray.push(activityObject)
+                                        if(milesDistance > userRange){
+                                            getBoredURL(category, price, userRange)
+                                        }
+                                        else{
+                                            keyArray.push(activityObject.key)
+                                            activityObject.mapInfo = mapObject
+                                            ideaArray.push(activityObject)
+                                        }
+                                    }
                                 }
-                            }
-                                else {
+                                if(milesDistance > userRange){
+                                    getBoredURL(category, price, userRange)
+                                }
+                                else{
                                     keyArray.push(activityObject.key)
                                     activityObject.mapInfo = mapObject
                                     ideaArray.push(activityObject)
-                                    
                                 }
 
                                 
@@ -968,6 +974,7 @@ function getBoredURL(category, price, userRange) {
 
 function submitForm() {
     //reset idea array
+    keyArray = []
     ideaArray = []
 
     //get value from all form inputs
@@ -999,14 +1006,15 @@ function submitForm() {
         createCard()
     }
     console.log(ideaArray)
-}
-// submitButton.addEventListener("click", function (event) {
-//     event.preventDefault()
-//     elementCount = cardHolder.children.length
 
-//     //from chat gpt 
-//     while (cardHolder.firstChild) {
-//         cardHolder.firstChild.remove();
-//     }
-//     submitForm()
-// })
+}
+ submitButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    elementCount = cardHolder.children.length
+
+    //from chat gpt 
+    while (cardHolder.firstChild) {
+        cardHolder.firstChild.remove();
+    }
+    submitForm()
+ })
