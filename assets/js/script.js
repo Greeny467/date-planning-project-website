@@ -1000,13 +1000,13 @@ function submitForm() {
     }
     console.log(ideaArray)
 }
-submitButton.addEventListener("click", function (event) {
-    event.preventDefault()
-    elementCount = cardHolder.children.length
+// submitButton.addEventListener("click", function (event) {
+//     event.preventDefault()
+//     elementCount = cardHolder.children.length
 
-    //from chat gpt 
-    while (cardHolder.firstChild) {
-        cardHolder.firstChild.remove();
-    }
-    submitForm()
-})
+//     //from chat gpt 
+//     while (cardHolder.firstChild) {
+//         cardHolder.firstChild.remove();
+//     }
+//     submitForm()
+// })
