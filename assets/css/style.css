@@ -169,7 +169,7 @@ main #cardHolder .card section {
     height: 95%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background: var(--color4);
     color: var(--text-color-dark);
@@ -178,11 +178,33 @@ main #cardHolder .card section {
 
 main #cardHolder .card section:first-child {
     border-radius: 10px 0 0 10px;
-    /* border-right: 3px dashed var(--main-color); */
+    border-right: 3px dashed var(--color3);
 }
 
 main #cardHolder .card section:last-child {
     border-radius: 0 10px 10px 0;
+}
+
+main #cardHolder .card section h2 {
+    font-size: 1.5em;
+    margin: 5px 0;
+}
+
+main #cardHolder .card section h3 {
+    font-size: 1.3em;
+    margin: 5px 0;
+}
+
+main #cardHolder .card section p {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+main #cardHolder .card section img {
+    object-fit: scale-down;
+    border-radius: 10px;
+    margin: 5px 0;
+    user-select: none;
 }
 
 /* Small Screen and Mobile friendly CSS */
