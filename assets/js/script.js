@@ -10,7 +10,6 @@ const cardHolder = document.querySelector("#cardHolder")
 
 var keyArray = []
 var ideaArray = []
-var mapArray = []
 
 mainForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -948,14 +947,15 @@ function getBoredURL(category, price, userRange) {
                                 }
                                     else{
                                         keyArray.push(activityObject.key)
+                                        activityObject.mapInfo = mapObject
                                         ideaArray.push(activityObject)
-                                        mapArray.push(mapObject)
                                 }
                             }
                                 else {
                                     keyArray.push(activityObject.key)
+                                    activityObject.mapInfo = mapObject
                                     ideaArray.push(activityObject)
-                                    mapArray.push(mapObject)
+                                    
                                 }
 
                                 
@@ -1008,7 +1008,6 @@ function submitForm() {
         // createCard()
     }
     console.log(ideaArray)
-console.log(mapArray)
 }
 // submitButton.addEventListener("click", function (event) {
 //     event.preventDefault()
