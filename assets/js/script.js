@@ -1,34 +1,66 @@
-var sideBar = document.querySelector("#sideBar")
-var mainForm = document.querySelector("#mainForm")
-var userLocation = document.querySelector("#userLocation")
-var locationDistance = document.querySelector("#locationDistance")
-var cardCount = document.querySelector("#cardCount")
-var category = document.querySelector("#setting")
-var priceRange = document.querySelector("#priceRange")
-var submitButton = document.querySelector("#mainSubmit")
-var cardHolder = document.querySelector("#cardHolder")
+const sideBar = document.querySelector("#sideBar")
+const mainForm = document.querySelector("#mainForm")
+const userLocation = document.querySelector("#userLocation")
+const locationDistance = document.querySelector("#locationDistance")
+const cardCount = document.querySelector("#cardCount")
+const category = document.querySelector("#setting")
+const priceRange = document.querySelector("#priceRange")
+const submitButton = document.querySelector("#mainSubmit")
+const cardHolder = document.querySelector("#cardHolder")
 
 var ideaArray = []
 
-//function createCard(requestURL)
+mainForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-//         var createCard = document.createElement("div")
-//          createCard.className = "card"
+    // Clear existing cards
+    cardHolder.innerHTML = "";
 
-//          var cardInfo = document.createElement("section")
-//          cardInfo.className = "activityInfo"
-//          createCard.appendChild(cardInfo)
+    // Get the number of cards to generate
+    var cardCount = parseInt(document.getElementById("cardCount").value);
 
-//          Create h2 for activity name, p for description, h3 for cost
+    // Generate the specified number of cards
+    for (var i = 0; i < cardCount; i++) {
+        var createCard = document.createElement("div");
+        createCard.className = "card";
 
-//          var cardMap = document.createElement("section")
-//          cardMap.className = "mapVisual"
-//          createCard.appendChild(cardMap)
+        var cardInfo = document.createElement("section");
+        cardInfo.className = "activityInfo";
+        createCard.appendChild(cardInfo);
 
-//          create h3 for location name, img for map image, and p for any extra info
+        // Create h2 for activity name, p for description, h3 for cost
+        var activityName = document.createElement("h2");
+        activityName.textContent = "Activity Name";
+        cardInfo.appendChild(activityName);
 
-//          cardHolder.appendChild(createCard)
-//}
+        var activityDescription = document.createElement("p");
+        activityDescription.textContent = "Activity Description";
+        cardInfo.appendChild(activityDescription);
+
+        var activityCost = document.createElement("h3");
+        activityCost.textContent = "Activity Cost";
+        cardInfo.appendChild(activityCost);
+
+        var cardMap = document.createElement("section");
+        cardMap.className = "mapVisual";
+        createCard.appendChild(cardMap);
+
+        // Create h3 for location name, img for map image, and p for any extra info
+        var locationName = document.createElement("h3");
+        locationName.textContent = "Location Name";
+        cardMap.appendChild(locationName);
+
+        var mapImage = document.createElement("img");
+        mapImage.src = "https://via.placeholder.com/150";
+        cardMap.appendChild(mapImage);
+
+        var extraInfo = document.createElement("p");
+        extraInfo.textContent = "Extra Info";
+        cardMap.appendChild(extraInfo);
+
+        cardHolder.appendChild(createCard);
+    }
+});
 
 function getBoredURL(category, price) {
     var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
@@ -898,7 +930,7 @@ function getBoredURL(category, price) {
                 getBoredURL(category, price)
             }
         })
-
+}
     //get maplocation and search up the activity on the map api in relation to location.
     //check if the locations shown are within the specified range.
 
@@ -906,7 +938,7 @@ function getBoredURL(category, price) {
     //      getBoredURL()    
     //}
 
-}
+
 
 function submitForm() {
     //get value from all form inputs
