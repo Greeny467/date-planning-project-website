@@ -11,57 +11,51 @@ const cardHolder = document.querySelector("#cardHolder")
 var keyArray = []
 var ideaArray = []
 
-mainForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-
+function createCard(){
+    console.log("create card running")
     // Clear existing cards
-    cardHolder.innerHTML = "";
 
-    // Get the number of cards to generate
-    var cardCount = parseInt(document.getElementById("cardCount").value);
 
-    // Generate the specified number of cards
-    for (var i = 0; i < cardCount; i++) {
-        var createCard = document.createElement("div");
-        createCard.className = "card";
+    var createCard = document.createElement("div");
+    createCard.className = "card";
 
-        var cardInfo = document.createElement("section");
-        cardInfo.className = "activityInfo";
-        createCard.appendChild(cardInfo);
+    var cardInfo = document.createElement("section");
+    cardInfo.className = "activityInfo";
+    createCard.appendChild(cardInfo);
 
-        // Create h2 for activity name, p for description, h3 for cost
-        var activityName = document.createElement("h2");
-        activityName.textContent = "Activity Name";
-        cardInfo.appendChild(activityName);
+    // Create h2 for activity name, p for description, h3 for cost
+    var activityName = document.createElement("h2");
+    activityName.textContent = "Activity Name";
+    cardInfo.appendChild(activityName);
 
-        var activityDescription = document.createElement("p");
-        activityDescription.textContent = "Activity Description";
-        cardInfo.appendChild(activityDescription);
+    var activityDescription = document.createElement("p");
+    activityDescription.textContent = "Activity Description";
+    cardInfo.appendChild(activityDescription);
 
-        var activityCost = document.createElement("h3");
-        activityCost.textContent = "Activity Cost";
-        cardInfo.appendChild(activityCost);
+    var activityCost = document.createElement("h3");
+    activityCost.textContent = "Activity Cost";
+    cardInfo.appendChild(activityCost);
 
-        var cardMap = document.createElement("section");
-        cardMap.className = "mapVisual";
-        createCard.appendChild(cardMap);
+    var cardMap = document.createElement("section");
+    cardMap.className = "mapVisual";
+    createCard.appendChild(cardMap);
 
-        // Create h3 for location name, img for map image, and p for any extra info
-        var locationName = document.createElement("h3");
-        locationName.textContent = "Location Name";
-        cardMap.appendChild(locationName);
+    // Create h3 for location name, img for map image, and p for any extra info
+    var locationName = document.createElement("h3");
+    locationName.textContent = "Location Name";
+    cardMap.appendChild(locationName);
 
-        var mapImage = document.createElement("img");
-        mapImage.src = "https://via.placeholder.com/150";
-        cardMap.appendChild(mapImage);
+    var mapImage = document.createElement("img");
+    mapImage.src = "https://via.placeholder.com/150";
+    cardMap.appendChild(mapImage);
 
-        var extraInfo = document.createElement("p");
-        extraInfo.textContent = "Extra Info";
-        cardMap.appendChild(extraInfo);
+    var extraInfo = document.createElement("p");
+    extraInfo.textContent = "Extra Info";
+    cardMap.appendChild(extraInfo);
 
-        cardHolder.appendChild(createCard);
-    }
-});
+    cardHolder.appendChild(createCard);
+}
+
 
 function getBoredURL(category, price, userRange) {
     var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
@@ -969,16 +963,13 @@ function getBoredURL(category, price, userRange) {
             }
         })
 }
-    //get maplocation and search up the activity on the map api in relation to location.
-    //check if the locations shown are within the specified range.
-
-    //if(locationsInRange == 0){
-    //      getBoredURL()    
-    //}
 
 
 
 function submitForm() {
+    //reset idea array
+    ideaArray = []
+
     //get value from all form inputs
     var urlLocation = userLocation.value
 
@@ -1005,7 +996,7 @@ function submitForm() {
 
     for (i = 0; i < numOfCard; i++) {
         getBoredURL(activityCategory, rangeModified, travelRange)
-        // createCard()
+        createCard()
     }
     console.log(ideaArray)
 }
