@@ -8,7 +8,9 @@ var priceRange = document.querySelector("#priceRange")
 var submitButton = document.querySelector("#mainSubmit")
 var cardHolder = document.querySelector("#cardHolder")
 
+var keyArray = []
 var ideaArray = []
+var mapArray = []
 
 //function createCard(requestURL)
 
@@ -30,7 +32,7 @@ var ideaArray = []
 //          cardHolder.appendChild(createCard)
 //}
 
-function getBoredURL(category, price){
+function getBoredURL(category, price, userRange){
     var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
     fetch(requestURL)
         .then(function(response){
@@ -38,7 +40,6 @@ function getBoredURL(category, price){
         })
         .then(function(data){
             var activityObject = data
-            console.log(activityObject)
 
 
             //Response filter, due to limited api versatility
@@ -964,33 +965,70 @@ function getBoredURL(category, price){
                 var twoPerson = "yes"
             }
             else {
-                getBoredURL(category, price)
+                getBoredURL(category, price, userRange)
             }
 
             if (twoPerson == "yes"){
                 //check if activityObject is within the specified range
                 
-                if (ideaArray.includes(activityObject)){
-                    getBoredURL(category, price)
+                if (keyArray.includes(activityObject.key)){
+                    getBoredURL(category, price, userRange)
+                    console.log("is here")
                 }
                 else {
+
                     if(atHome == "yes"){
                         ideaArray.push(activityObject)
+                        keyArray.push(activityObject.key)
                     }
                     else if(atHome == "no"){
-                        var mapURL = "mapurl"
+                        var lat = 40.3057
+                        var lon = -111.7495
+                        var mapURL = "https://api.mapbox.com/search/searchbox/v1/suggest?q=" + mapDesc + "&access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA&session_token=UUIDv4&origin=" + lon + "," + lat
                         fetch(mapURL)
                             .then(function(response){
                                 return response.json()
                             })
                             .then(function(data){
                                 console.log(data)
+                                var apiResponse = data.suggestions[1]
+                                var milesDistance = apiResponse.distance / 1609.34
+                                var travelTime = apiResponse.eta 
+                                var where = apiResponse.full_address
+                                var mapObject = {
+                                    distance: milesDistance,
+                                    travelTime: travelTime,
+                                    location: where
+                                }
+
+                                if (apiResponse.feature_type != "poi"){
+                                    apiResponse = data.suggestions[2]
+                                    milesDistance = apiResponse.distance / 1609
+                                    travelTime = apiResponse.eta
+                                    where = apiResponse.full_address
+
+                                    if (apiResponse.feature_type!= "poi"){
+                                        getBoredURL(category, price, userRange)
+                                    }
+                                    else{
+                                        keyArray.push(activityObject.key)
+                                        ideaArray.push(activityObject)
+                                        mapArray.push(mapObject)
+                                    }
+                                }
+                                else{
+                                    keyArray.push(activityObject.key)
+                                    ideaArray.push(activityObject)
+                                    mapArray.push(mapObject)
+                                }
+
+                                
                             })
-                        }
                     }
                 }
             }
-            else{
+            
+            else {
                 getBoredURL(category, price)
             }
         })
@@ -1007,19 +1045,14 @@ function getBoredURL(category, price){
 function submitForm(){
     //get value from all form inputs
     var urlLocation = userLocation.value
-    console.log(urlLocation)
 
     var travelRange = locationDistance.value
-    console.log(travelRange)
 
     var numOfCard = cardCount.value
-    console.log(numOfCard)
 
     var activityCategory = category.value.toLowerCase()
-    console.log(activityCategory)
 
     var range = priceRange.value
-    console.log(range)
     
     var rangeModified = range / 100
 
@@ -1035,11 +1068,11 @@ function submitForm(){
     
 
     for(i = 0; i < numOfCard; i++){
-        getBoredURL(activityCategory, rangeModified)
-
+        getBoredURL(activityCategory, rangeModified, travelRange)
         // createCard()
     }
-    
+    console.log(ideaArray)
+    console.log(mapArray)
 }   
 submitButton.addEventListener("click", function(event){
     event.preventDefault()
@@ -1048,7 +1081,6 @@ submitButton.addEventListener("click", function(event){
     //from chat gpt 
     while (cardHolder.firstChild) {
         cardHolder.firstChild.remove();
-        console.log("removed");
     }
     submitForm()
 })
