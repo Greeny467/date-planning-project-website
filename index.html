@@ -14,14 +14,21 @@
         <main>
             <section id="sideBar">
                 <form id="mainForm">
-                    <input type="text" id="userLocation" placeholder="Search Location?">
+                    <div id="locationInput">
+                        <select name="country" id="countryChoice">
+                            <option value = "None">Select One</option>
+                            <option value="US">United States</option>
+                            <option value="UK">United Kingdom</option>
+                        </select>
+                    </div>
+                    <input type="text" id="userLocation" placeholder="Address?">
                     <p>Travel Distance?</p>
                     <select name="Distance to Travel" id="locationDistance">
-                        <option value=10>5 Miles</option>
-                        <option value=20>10 Miles</option>
-                        <option value=30>15 Miles</option>
-                        <option value=40>20 Miles</option>
-                        <option value=50>25 Miles</option>
+                        <option value=10>10 Miles</option>
+                        <option value=20>20 Miles</option>
+                        <option value=30>30 Miles</option>
+                        <option value=40>40 Miles</option>
+                        <option value=50>50 Miles</option>
                     </select>
                     <p>Number of Choices?</p>
                     <select name="Number of Cards" id="cardCount">

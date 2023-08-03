@@ -7,9 +7,50 @@ const category = document.querySelector("#setting")
 const priceRange = document.querySelector("#priceRange")
 const submitButton = document.querySelector("#mainSubmit")
 const cardHolder = document.querySelector("#cardHolder")
+const locationInput = document.querySelector("#locationInput")
+const countryInput = document.querySelector("#countryChoice")
+
 
 var keyArray = []
 var ideaArray = []
+
+countryInput.addEventListener("input", (event)=>{
+    console.log(countryInput.value)
+    if (countryInput.value == "US" && locationInput.children.length == 1){
+        console.log("here")
+        var stateSelect = document.createElement("select")
+        stateSelect.setAttribute("id", "stateSelect")
+        stateSelect.setAttribute("name", "stateSelect")
+       
+        var stateNames = [
+            "Alabama", "California", "Hawaii", "Delaware", "Florida", "Idaho", "Rhode Island", "Washington", "Kansas", "Louisiana", "Maine", "Nebraska", "Ohio", "Pennsylvania", "South Carolina", "Texas", "Utah", "Georgia", "Vermont", "Tennessee", "Colorado", "Alaska", "Arkansas", "Arizona", "Illinois", "New Jersey", "Connecticut", "Indiana", "New Mexico", "Iowa", "Kentucky", "Maryland", "Michigan", "Minnesota", "Montana", "Nevada", "New Hampshire", "North Carolina", "North Dakota", "Massachusetts", "Oregon", "Oklahoma", "West Virginia", "Wisconsin", "Virginia", "South Dakota", "Wyoming", "Mississippi", "Missouri", "New York"
+        ]
+        //From chat gpt
+        var stateCodesList = stateNames.map(function(stateName) {
+            return stateName.slice(0, 2).toUpperCase();
+        })
+
+        
+
+        var stateAmount = stateNames.length
+        for (i = 0; i < stateAmount; i++){
+            var optionCreate = document.createElement("option")
+            optionCreate.textContent=stateNames[i]
+            optionCreate.value = stateCodesList[i]
+            stateSelect.append(optionCreate)
+        }
+        locationInput.append(stateSelect)
+    }
+    else if(countryInput.value == "US" && locationInput.children.length == 2){
+        return
+    }
+    else if (countryInput.value !="US" && locationInput.children.length > 1){
+        locationInput.lastChild.remove()
+    }
+    else {
+        return
+    }
+})
 
 function createCard(){
     console.log("create card running")
@@ -1008,7 +1049,6 @@ function submitForm() {
     ideaArray = []
 
     //get value from all form inputs
-    var urlLocation = userLocation.value
 
     var travelRange = locationDistance.value
 
@@ -1020,9 +1060,21 @@ function submitForm() {
 
     var rangeModified = range / 100
 
+    var locationObject = {
+        country: countryInput.value,
+        address: userLocation.value
+    }
+
+    if(locationObject.country == "US"){
+        var stateSelectElement = document.querySelector("#stateSelect")
+        var stateSelected = stateSelectElement.value
+
+        locationObject.state = stateSelected
+        console.log(locationObject)
+    }
+
 
     //reset all inputs to empty so user can search again
-    userLocation.value = ""
     locationDistance.value = ""
     cardCount.value = ""
     category.value = ""
@@ -1038,13 +1090,25 @@ function submitForm() {
     console.log(ideaArray)
 
 }
- submitButton.addEventListener("click", function (event) {
+
+
+submitButton.addEventListener("click", function (event) {
     event.preventDefault()
     elementCount = cardHolder.children.length
-
+    
     //from chat gpt 
     while (cardHolder.firstChild) {
         cardHolder.firstChild.remove();
     }
-    submitForm()
- })
+
+    if(countryInput.value != "None" && userLocation.value != ""){
+        submitForm()
+    }
+    else{
+        var createError = document.createElement("h1")
+        createError.textContent = "Uh Oh, it looks like you didn't select a country or failed to enter an address, please try again"
+        cardHolder.appendChild(createError)
+    }
+    
+})
+
