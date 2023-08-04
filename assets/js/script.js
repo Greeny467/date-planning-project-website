@@ -14,8 +14,7 @@ const countryInput = document.querySelector("#countryChoice")
 var keyArray = []
 var ideaArray = []
 
-countryInput.addEventListener("input", (event)=>{
-    console.log(countryInput.value)
+function usSelect(){
     if (countryInput.value == "US" && locationInput.children.length == 1){
         console.log("here")
         var stateSelect = document.createElement("select")
@@ -50,7 +49,26 @@ countryInput.addEventListener("input", (event)=>{
     else {
         return
     }
+}
+countryInput.addEventListener("change", (event)=>{
+    console.log(countryInput.value)
+    usSelect()
 })
+
+if (countryInput.value == "None"){
+    if (localStorage.getItem("location") != null){
+        locationObject = JSON.parse(localStorage.getItem("location"))
+        countryInput.value = locationObject.country
+        userLocation.value = locationObject.address
+        usSelect()
+        if (locationObject.country == "US"){
+            var stateSelectElement = document.querySelector("#stateSelect")
+            stateSelectElement.value = locationObject.state
+        }
+    }
+}
+
+
 
 function createCard(){
     console.log("create card running")
@@ -1075,6 +1093,7 @@ function submitForm() {
         country: countryInput.value,
         address: userLocation.value
     }
+    
 
     if(locationObject.country == "US"){
         var stateSelectElement = document.querySelector("#stateSelect")
@@ -1083,7 +1102,7 @@ function submitForm() {
         locationObject.state = stateSelected
         console.log(locationObject)
     }
-
+    localStorage.setItem("location", JSON.stringify(locationObject))
 
 
 
