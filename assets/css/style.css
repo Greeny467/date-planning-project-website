@@ -209,24 +209,17 @@ main #cardHolder .card section:last-child {
 
 main #cardHolder .card section h2 {
     font-size: 1.5em;
-    margin: 5px 0;
+    margin: 5px;
 }
 
 main #cardHolder .card section h3 {
     font-size: 1.3em;
-    margin: 5px 0;
+    margin: 5px;
 }
 
 main #cardHolder .card section p {
     font-size: 1.1em;
-    margin: 5px 0;
-}
-
-main #cardHolder .card section img {
-    object-fit: scale-down;
-    border-radius: 10px;
-    margin: 5px 0;
-    user-select: none;
+    margin: 5px;
 }
 
 /* Small Screen and Mobile friendly CSS */
