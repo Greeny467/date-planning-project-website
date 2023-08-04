@@ -70,8 +70,8 @@ if (countryInput.value == "None"){
 
 
 
-function createCard(){
-    console.log("create card running")
+function createCard(object){
+    
 
     var createCard = document.createElement("div");
     createCard.className = "card";
@@ -953,7 +953,7 @@ function getBoredURL(category, price, userRange, locationObject) {
             else {
                 getBoredURL(category, price, userRange, locationObject)
             }
-
+           
             if (twoPerson == "yes") {
                 //check if activityObject is within the specified range
                 
@@ -965,6 +965,8 @@ function getBoredURL(category, price, userRange, locationObject) {
                     if(atHome == "yes"){
                         ideaArray.push(activityObject)
                         keyArray.push(activityObject.key)
+                        localStorage.setItem("ideaArray", JSON.stringify(ideaArray))
+                        return(ideaArray)
                     }
                     else if(atHome == "no"){
                         var country = locationObject.country
@@ -1044,6 +1046,8 @@ function getBoredURL(category, price, userRange, locationObject) {
                                                     keyArray.push(activityObject.key)
                                                     activityObject.mapInfo = mapObject
                                                     ideaArray.push(activityObject)
+                                                    localStorage.setItem("ideaArray", JSON.stringify(ideaArray))
+                                                    return(ideaArray)
                                                 }
                                             }
                                         }
@@ -1055,6 +1059,8 @@ function getBoredURL(category, price, userRange, locationObject) {
                                             keyArray.push(activityObject.key)
                                             activityObject.mapInfo = mapObject
                                             ideaArray.push(activityObject)
+                                            localStorage.setItem("ideaArray", JSON.stringify(ideaArray))
+                                            return(ideaArray)
                                         }
 
                                         
@@ -1067,6 +1073,7 @@ function getBoredURL(category, price, userRange, locationObject) {
             else {
                 getBoredURL(category, price, userRange, locationObject)
             }
+            
         })
 }
 
@@ -1110,9 +1117,10 @@ function submitForm() {
 
     for (i = 0; i < numOfCard; i++) {
         getBoredURL(activityCategory, rangeModified, travelRange, locationObject)
-        createCard()
+        var ideaArray = JSON.parse(localStorage.getItem("ideaArray"))
+        
+        createCard(ideaArray[i])
     }
-    console.log(ideaArray)
 
 }
 
