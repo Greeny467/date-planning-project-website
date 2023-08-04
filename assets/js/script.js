@@ -102,9 +102,9 @@ function createCard(){
     locationName.textContent = "Location Name";
     cardMap.appendChild(locationName);
 
-    var mapImage = document.createElement("img");
-    mapImage.src = "https://via.placeholder.com/150";
-    cardMap.appendChild(mapImage);
+    // var mapImage = document.createElement("img");
+    // mapImage.src = "https://via.placeholder.com/150";
+    // cardMap.appendChild(mapImage);
 
     var extraInfo = document.createElement("p");
     extraInfo.textContent = "Extra Info";
