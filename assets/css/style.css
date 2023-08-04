@@ -115,7 +115,7 @@ main #sideBar form #mainSubmit {
     border: none;
     border-radius: 0.5em;
     outline: none;
-    font-size: 1.05em;
+    font-size: 1.25em;
     width: 100%;
     margin: 15px 0px;
     background: var(--main-color-dark);
@@ -156,6 +156,7 @@ main #cardHolder h1 {
     background-color: white;
     margin: 1% 0;
     color: var(--text-color-dark);
+    font: 400 1.5em var(--main-font);
 }
 
 
@@ -278,7 +279,7 @@ main #cardHolder .card section img {
     main #sideBar form {
         width: 80%;
         height: auto;
-        margin-top: 0;
+        margin-top: 1vh;
     }
 
     main #sideBar form input {
