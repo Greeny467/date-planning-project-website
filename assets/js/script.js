@@ -22,9 +22,9 @@ countryInput.addEventListener("input", (event)=>{
         stateSelect.setAttribute("id", "stateSelect")
         stateSelect.setAttribute("name", "stateSelect")
        
-        var stateNames = [
-            "Alabama", "California", "Hawaii", "Delaware", "Florida", "Idaho", "Rhode Island", "Washington", "Kansas", "Louisiana", "Maine", "Nebraska", "Ohio", "Pennsylvania", "South Carolina", "Texas", "Utah", "Georgia", "Vermont", "Tennessee", "Colorado", "Alaska", "Arkansas", "Arizona", "Illinois", "New Jersey", "Connecticut", "Indiana", "New Mexico", "Iowa", "Kentucky", "Maryland", "Michigan", "Minnesota", "Montana", "Nevada", "New Hampshire", "North Carolina", "North Dakota", "Massachusetts", "Oregon", "Oklahoma", "West Virginia", "Wisconsin", "Virginia", "South Dakota", "Wyoming", "Mississippi", "Missouri", "New York"
-        ]
+            var stateNames = [
+                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+            ]
         //From chat gpt
         var stateCodesList = stateNames.map(function(stateName) {
             return stateName.slice(0, 2).toUpperCase();
@@ -54,8 +54,6 @@ countryInput.addEventListener("input", (event)=>{
 
 function createCard(){
     console.log("create card running")
-    // Clear existing cards
-
 
     var createCard = document.createElement("div");
     createCard.className = "card";
@@ -1087,11 +1085,6 @@ function submitForm() {
     }
 
 
-    //reset all inputs to empty so user can search again
-    locationDistance.value = ""
-    cardCount.value = ""
-    category.value = ""
-    priceRange.value = ""
 
 
 

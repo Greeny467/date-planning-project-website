@@ -27,6 +27,11 @@ header {
     font: 1.3em var(--main-font);
 }
 
+header img {
+    height: 70%;
+    margin-right: 1vw;
+}
+
 
 /* Main Selectors */
 main {
@@ -72,6 +77,16 @@ main #sideBar form input {
     margin: 15px 0px;
 }
 
+main #sideBar form #stateSelect {
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    outline: none;
+    font-size: 1.05em;
+    width: 100%;
+    margin: 15px 0px;
+}
+
 main #sideBar form #priceRange {
     padding: 0;
 }
@@ -87,14 +102,6 @@ main #sideBar form select {
 
 main #sideBar form p {
     margin: 20px 0 2px 0;
-}
-
-main #sideBar form #userLocation:hover {
-    border: 3px inset var(--main-border-color);
-}
-
-main #sideBar form #userLocation:focus {
-    border: 3px inset var(--main-border-color);
 }
 
 main #sideBar form #priceLabels {
@@ -114,10 +121,16 @@ main #sideBar form #mainSubmit {
     background: var(--main-color-dark);
     color: var(--text-color-light);
     cursor: pointer;
+    transition: background 0.4s ease-in-out,
+                color 0.4s ease-in-out,
+                box-shadow 0.4s ease-in-out;
 }
 
 main #sideBar form #mainSubmit:hover {
+    color: black;
     background: var(--color2);
+    box-shadow: 0 0 5px var(--color2), 0 0 25px var(--color2), 0 0 50px var(--color2);
+    
 }
 
 main #sideBar form #mainSubmit:active {
@@ -135,6 +148,14 @@ main #cardHolder {
     flex-wrap: wrap;
     overflow: auto;
     border: 3px solid var(--color3);
+}
+
+main #cardHolder h1 {
+    height: fit-content;
+    text-align: center;
+    background-color: white;
+    margin: 1% 0;
+    color: var(--text-color-dark);
 }
 
 
