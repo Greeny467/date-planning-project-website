@@ -51,7 +51,6 @@ function usSelect(){
     }
 }
 countryInput.addEventListener("change", (event)=>{
-    console.log(countryInput.value)
     usSelect()
 })
 
@@ -80,41 +79,70 @@ function createCard(object){
     cardInfo.className = "activityInfo";
     createCard.appendChild(cardInfo);
 
-    // Create h2 for activity name, p for description, h3 for cost
+    // Create h2 for activity name, h3 for cost
     var activityName = document.createElement("h2");
-    activityName.textContent = "Activity Name";
+    activityName.textContent = object.activity;
     cardInfo.appendChild(activityName);
+    
+    //price section
+    console.log(object.price)
+    console.log(object)
+    if (object.price == 0){
+        var costText = "This activity is free"
+    }
+    else if (object.price > 0 && object.price < 0.3){
+        var costText = "Should cost less than 40$"
+    }
+    else if (object.price > 0.3 && object.price < 0.5){
+        var costText = "Should cost less than 60-80$"
+    }
+    else if (object.price > 0.5 && object.price < 0.8){
+        var costText = "Could cost up to around 120$"
+    }
+    else if (object.price > 0.8){
+        var costText = "Could cost up to 150$ or higher."
+    }
 
-    var activityDescription = document.createElement("p");
-    activityDescription.textContent = "Activity Description";
-    cardInfo.appendChild(activityDescription);
-
+    
     var activityCost = document.createElement("h3");
-    activityCost.textContent = "Activity Cost";
+    activityCost.textContent = costText;
     cardInfo.appendChild(activityCost);
 
+    //map section
     var cardMap = document.createElement("section");
     cardMap.className = "mapVisual";
     createCard.appendChild(cardMap);
+    if (object.mapInfo != null){
+         // Create h3 for location name, img for map image, and p for any extra info
+        var locationName = document.createElement("h3");
+        locationName.textContent = object.mapInfo.name;
+        cardMap.appendChild(locationName);
 
-    // Create h3 for location name, img for map image, and p for any extra info
-    var locationName = document.createElement("h3");
-    locationName.textContent = "Location Name";
-    cardMap.appendChild(locationName);
+        var addressText = document.createElement("h4")
+        addressText.textContent = object.mapInfo.location
+        cardMap.appendChild(addressText)
 
-    // var mapImage = document.createElement("img");
-    // mapImage.src = "https://via.placeholder.com/150";
-    // cardMap.appendChild(mapImage);
+        // var mapImage = document.createElement("img");
+        // mapImage.src = "https://via.placeholder.com/150";
+        // cardMap.appendChild(mapImage);
 
-    var extraInfo = document.createElement("p");
-    extraInfo.textContent = "Extra Info";
-    cardMap.appendChild(extraInfo);
+        var extraInfo = document.createElement("p");
+        extraInfo.textContent = object.mapInfo.distance + " Miles Away";
+        cardMap.appendChild(extraInfo);
+    }
+    else{
+        var noMapText = document.createElement("h2")
+        noMapText.textContent = "This is something you can do at home!"
+        cardMap.appendChild(noMapText)
+    }
+
+   
 
     cardHolder.appendChild(createCard);
 }
 
 
-function getBoredURL(category, price, userRange, locationObject) {
+function getBoredURL(category, price, userRange, locationObject, i) {
     var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
     fetch(requestURL)
         .then(function (response) {
@@ -951,22 +979,21 @@ function getBoredURL(category, price, userRange, locationObject) {
                 var twoPerson = "yes"
             }
             else {
-                getBoredURL(category, price, userRange, locationObject)
+                getBoredURL(category, price, userRange, locationObject, i)
             }
            
             if (twoPerson == "yes") {
                 //check if activityObject is within the specified range
                 
                 if (keyArray.includes(activityObject.key)){
-                    getBoredURL(category, price, userRange)
+                    getBoredURL(category, price, userRange, locationObject, i)
                     return
                 }
                 else {
                     if(atHome == "yes"){
-                        ideaArray.push(activityObject)
                         keyArray.push(activityObject.key)
-                        localStorage.setItem("ideaArray", JSON.stringify(ideaArray))
-                        return(ideaArray)
+                        createCard(activityObject)
+                        return
                     }
                     else if(atHome == "no"){
                         var country = locationObject.country
@@ -981,7 +1008,6 @@ function getBoredURL(category, price, userRange, locationObject) {
                                 return response.json()
                             })
                             .then(function(data){
-                                console.log(data)
                                 var lat = data.features[0].center[1]
                                 var lon = data.features[0].center[0]
                                 var mapURL = "https://api.mapbox.com/search/searchbox/v1/suggest?q=" + mapDesc + "&access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA&session_token=UUIDv4&origin=" + lon + "," + lat
@@ -990,7 +1016,6 @@ function getBoredURL(category, price, userRange, locationObject) {
                                         return response.json()
                                     })
                                     .then(function (data) {
-                                        console.log(data)
                                         var apiResponse = data.suggestions[1]
                                         var name = apiResponse.name
                                         var milesDistance = apiResponse.distance / 1609.34
@@ -1033,34 +1058,32 @@ function getBoredURL(category, price, userRange, locationObject) {
                                                 if(apiResponse.feature_type!="poi"){
                                                     console.log("try again")
                                                     activityObject = ""
-                                                    getBoredURL(category, price, userRange, locationObject)
+                                                    getBoredURL(category, price, userRange, locationObject, i)
                                                     return
                                                 }    
                                             }
                                             else{
                                                 if(milesDistance > userRange){
-                                                    getBoredURL(category, price, userRange, locationObject)
+                                                    getBoredURL(category, price, userRange, locationObject, i)
                                                     return
                                                 }
                                                 else{
                                                     keyArray.push(activityObject.key)
                                                     activityObject.mapInfo = mapObject
-                                                    ideaArray.push(activityObject)
-                                                    localStorage.setItem("ideaArray", JSON.stringify(ideaArray))
-                                                    return(ideaArray)
+                                                    createCard(activityObject)
+                                                    return
                                                 }
                                             }
                                         }
                                         if(milesDistance > userRange){
-                                            getBoredURL(category, price, userRange, locationObject)
+                                            getBoredURL(category, price, userRange, locationObject, i)
                                             return
                                         }
                                         else{
                                             keyArray.push(activityObject.key)
                                             activityObject.mapInfo = mapObject
-                                            ideaArray.push(activityObject)
-                                            localStorage.setItem("ideaArray", JSON.stringify(ideaArray))
-                                            return(ideaArray)
+                                            createCard(activityObject)
+                                            return
                                         }
 
                                         
@@ -1071,7 +1094,7 @@ function getBoredURL(category, price, userRange, locationObject) {
             }
             
             else {
-                getBoredURL(category, price, userRange, locationObject)
+                getBoredURL(category, price, userRange, locationObject, i)
             }
             
         })
@@ -1107,7 +1130,6 @@ function submitForm() {
         var stateSelected = stateSelectElement.value
 
         locationObject.state = stateSelected
-        console.log(locationObject)
     }
     localStorage.setItem("location", JSON.stringify(locationObject))
 
@@ -1116,10 +1138,7 @@ function submitForm() {
 
 
     for (i = 0; i < numOfCard; i++) {
-        getBoredURL(activityCategory, rangeModified, travelRange, locationObject)
-        var ideaArray = JSON.parse(localStorage.getItem("ideaArray"))
-        
-        createCard(ideaArray[i])
+        getBoredURL(activityCategory, rangeModified, travelRange, locationObject, i)
     }
 
 }
