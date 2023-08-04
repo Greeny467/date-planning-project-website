@@ -98,7 +98,7 @@ function createCard(){
 }
 
 
-function getBoredURL(category, price, userRange) {
+function getBoredURL(category, price, userRange, locationObject) {
     var requestURL = "https://www.boredapi.com/api/activity?participants=1&type=" + category + "&maxprice=" + price
     fetch(requestURL)
         .then(function (response) {
@@ -935,7 +935,7 @@ function getBoredURL(category, price, userRange) {
                 var twoPerson = "yes"
             }
             else {
-                getBoredURL(category, price, userRange)
+                getBoredURL(category, price, userRange, locationObject)
             }
 
             if (twoPerson == "yes") {
@@ -946,70 +946,93 @@ function getBoredURL(category, price, userRange) {
                     return
                 }
                 else {
-
                     if(atHome == "yes"){
                         ideaArray.push(activityObject)
                         keyArray.push(activityObject.key)
                     }
                     else if(atHome == "no"){
-                        var lat = 40.3057
-                        var lon = -111.7495
-                        var mapURL = "https://api.mapbox.com/search/searchbox/v1/suggest?q=" + mapDesc + "&access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA&session_token=UUIDv4&origin=" + lon + "," + lat
-                        fetch(mapURL)
-                            .then(function (response) {
+                        var country = locationObject.country
+                        if (country != "US"){
+                            var geoURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + locationObject.address + " " + locationObject.country + ".json?access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA"
+                        }
+                        else {
+                            var geoURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + locationObject.address + " " + locationObject.state + " " + locationObject.state + ".json?access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA"
+                        }
+                        fetch(geoURL)
+                            .then(function(response){
                                 return response.json()
                             })
-                            .then(function (data) {
+                            .then(function(data){
                                 console.log(data)
-                                var apiResponse = data.suggestions[1]
-                                var name = apiResponse.name
-                                var milesDistance = apiResponse.distance / 1609.34
-                                var travelTime = apiResponse.eta 
-                                var where = apiResponse.full_address
-                
-                                var mapObject = {
-                                    name: name,
-                                    distance: milesDistance,
-                                    travelTime: travelTime,
-                                    location: where
-                                }
-                                
-                                if (apiResponse.feature_type != "poi"){
-                                    apiResponse = data.suggestions[2]
-                                    milesDistance = apiResponse.distance / 1609
-                                    travelTime = apiResponse.eta
-                                    where = apiResponse.full_address
-
-                                    mapObject = {
-                                        name: name,
-                                        distance: milesDistance,
-                                        travelTime: travelTime,
-                                        location: where
-                                    }
-
-                                    if (apiResponse.feature_type!= "poi"){
-                                        apiResponse = data.suggestions[3]
-                                        milesDistance = apiResponse.distance / 1609
-                                        travelTime = apiResponse.eta
-                                        where = apiResponse.full_address
-
-                                        mapObject = {
+                                var lat = data.features[0].center[1]
+                                var lon = data.features[0].center[0]
+                                var mapURL = "https://api.mapbox.com/search/searchbox/v1/suggest?q=" + mapDesc + "&access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA&session_token=UUIDv4&origin=" + lon + "," + lat
+                                fetch(mapURL)
+                                    .then(function (response) {
+                                        return response.json()
+                                    })
+                                    .then(function (data) {
+                                        console.log(data)
+                                        var apiResponse = data.suggestions[1]
+                                        var name = apiResponse.name
+                                        var milesDistance = apiResponse.distance / 1609.34
+                                        var travelTime = apiResponse.eta 
+                                        var where = apiResponse.full_address
+                        
+                                        var mapObject = {
                                             name: name,
                                             distance: milesDistance,
                                             travelTime: travelTime,
                                             location: where
                                         }
+                                        
+                                        if (apiResponse.feature_type != "poi"){
+                                            apiResponse = data.suggestions[2]
+                                            milesDistance = apiResponse.distance / 1609
+                                            travelTime = apiResponse.eta
+                                            where = apiResponse.full_address
 
-                                        if(apiResponse.feature_type!="poi"){
-                                            console.log("try again")
-                                            activityObject = ""
-                                            getBoredURL(category, price, userRange)
-                                            return
-                                        }    
-                                    }
-                                    else{
+                                            mapObject = {
+                                                name: name,
+                                                distance: milesDistance,
+                                                travelTime: travelTime,
+                                                location: where
+                                            }
+
+                                            if (apiResponse.feature_type!= "poi"){
+                                                apiResponse = data.suggestions[3]
+                                                milesDistance = apiResponse.distance / 1609
+                                                travelTime = apiResponse.eta
+                                                where = apiResponse.full_address
+
+                                                mapObject = {
+                                                    name: name,
+                                                    distance: milesDistance,
+                                                    travelTime: travelTime,
+                                                    location: where
+                                                }
+
+                                                if(apiResponse.feature_type!="poi"){
+                                                    console.log("try again")
+                                                    activityObject = ""
+                                                    getBoredURL(category, price, userRange, locationObject)
+                                                    return
+                                                }    
+                                            }
+                                            else{
+                                                if(milesDistance > userRange){
+                                                    getBoredURL(category, price, userRange, locationObject)
+                                                    return
+                                                }
+                                                else{
+                                                    keyArray.push(activityObject.key)
+                                                    activityObject.mapInfo = mapObject
+                                                    ideaArray.push(activityObject)
+                                                }
+                                            }
+                                        }
                                         if(milesDistance > userRange){
-                                            getBoredURL(category, price, userRange)
+                                            getBoredURL(category, price, userRange, locationObject)
                                             return
                                         }
                                         else{
@@ -1017,26 +1040,16 @@ function getBoredURL(category, price, userRange) {
                                             activityObject.mapInfo = mapObject
                                             ideaArray.push(activityObject)
                                         }
-                                    }
-                                }
-                                if(milesDistance > userRange){
-                                    getBoredURL(category, price, userRange)
-                                    return
-                                }
-                                else{
-                                    keyArray.push(activityObject.key)
-                                    activityObject.mapInfo = mapObject
-                                    ideaArray.push(activityObject)
-                                }
 
-                                
+                                        
+                                    })
                             })
                     }
                 }
             }
             
             else {
-                getBoredURL(category, price)
+                getBoredURL(category, price, userRange, locationObject)
             }
         })
 }
@@ -1084,7 +1097,7 @@ function submitForm() {
 
 
     for (i = 0; i < numOfCard; i++) {
-        getBoredURL(activityCategory, rangeModified, travelRange)
+        getBoredURL(activityCategory, rangeModified, travelRange, locationObject)
         createCard()
     }
     console.log(ideaArray)
