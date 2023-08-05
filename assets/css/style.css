@@ -38,6 +38,7 @@ main {
     min-height: 92vh;
     width: 100vw;
     display: flex;
+    background: var(--main-color);
 }
 
 select option {
@@ -48,7 +49,6 @@ select option {
 main #sideBar {
     width: 23%;
     min-height: auto;
-    background: var(--main-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,37 +124,31 @@ main #sideBar form #mainSubmit {
     cursor: pointer;
     transition: background 0.4s ease-in-out,
                 box-shadow 0.4s ease-in-out;
-}
 
-main #sideBar form #mainSubmit:hover {
-    background: var(--color5);
-    box-shadow: 0 0 5px var(--color5), 0 0 25px var(--color5), 0 0 50px var(--color5);
-    
-}
+    &:hover {
+        background: var(--color5);
+        box-shadow: 0 0 5px var(--color5), 0 0 25px var(--color5), 0 0 50px var(--color5);
+    }
 
-main #sideBar form #mainSubmit:active {
-    background: var(--color4);
+    &:active {
+        background: var(--color4);
+    }
 }
-
 
     /* Cardholder */
 main #cardHolder {
     width: 77%;
     padding: 1% 1% 0 1%;
-    background: var(--main-color);
-    background-attachment: fixed;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
+    align-content: flex-start;
 }
 
 main #cardHolder h1 {
-    height: fit-content;
     text-align: center;
-    background-color: white;
     margin: 1% 0;
-    color: var(--text-color-dark);
-    font: 400 1.5em var(--main-font);
+    color: var(--text-color-light);
 }
 
 
@@ -174,10 +168,10 @@ main #cardHolder .card {
     box-shadow: 0 0 15px var(--color3);
     transition: opacity 0.4s ease-in-out, 
                 scale 0.5s ease-in-out;
-}
 
-main #cardHolder .card:hover {
-    scale: 1.1;
+    &:hover {
+        scale: 1.1;
+    }
 }
 
 main #cardHolder:has(.card:hover) .card:not(:hover) {
@@ -195,35 +189,27 @@ main #cardHolder .card section {
     text-align: center;
     color: var(--text-color-light);
     font: 400 1.3em var(--main-font);
+
+    & h2 {
+        font-size: 1.5em;
+        margin: 6%;
+    }
+    & h3 {
+        font-size: 1.3em;
+        margin: 6%;
+    }
+    & h4 {
+        font-size: 1.1em;
+        margin: 6%;
+    }
+    & p {
+        font-size: 1.1em;
+        margin: 6%;
+    }
 }
 
 main #cardHolder .card section:first-child {
-    border-radius: 10px 0 0 10px;
     border-right: 3px dashed var(--color3);
-}
-
-main #cardHolder .card section:last-child {
-    border-radius: 0 10px 10px 0;
-}
-
-main #cardHolder .card section h2 {
-    font-size: 1.5em;
-    margin: 6%;
-}
-
-main #cardHolder .card section h3 {
-    font-size: 1.3em;
-    margin: 6%;
-}
-
-main #cardHolder .card section h4 {
-    font-size: 1.1em;
-    margin: 6%;
-}
-
-main #cardHolder .card section p {
-    font-size: 1.1em;
-    margin: 6%;
 }
 
 main #cardHolder .card section a {
