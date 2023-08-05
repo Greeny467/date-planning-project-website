@@ -1006,6 +1006,8 @@ function getBoredURL(category, price, userRange, locationObject, i) {
                                         return response.json()
                                     })
                                     .then(function (data) {
+                                        console.log(data)
+                                        
                                         var apiResponse = data.suggestions[1]
                                         var name = apiResponse.name
                                         var milesDistance = apiResponse.distance / 1609.34
