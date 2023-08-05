@@ -998,6 +998,7 @@ function getBoredURL(category, price, userRange, locationObject, i) {
                                 return response.json()
                             })
                             .then(function(data){
+                                console.log(data)
                                 var lat = data.features[0].center[1]
                                 var lon = data.features[0].center[0]
                                 var mapURL = "https://api.mapbox.com/search/searchbox/v1/suggest?q=" + mapDesc + "&access_token=pk.eyJ1IjoibmF0aGFuZzQ1NiIsImEiOiJjbGtqNDg0a2YwMzQ5M2RvOGx6dGgxb3FkIn0.yUbT_dC_9GY3u3-rryFFeA&session_token=UUIDv4&origin=" + lon + "," + lat
