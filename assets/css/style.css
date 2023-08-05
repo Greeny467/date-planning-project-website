@@ -65,6 +65,7 @@ main #sideBar form {
     width: 70%;
     margin-top: 8vh;
     font: 400 1.2em var(--main-font);
+    transition: all 0.4s ease-in-out;
 }
 
 main #sideBar form input {

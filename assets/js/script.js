@@ -85,24 +85,12 @@ function createCard(object){
     cardInfo.appendChild(activityName);
     
     //price section
-    console.log(object.price)
-    console.log(object)
-    if (object.price == 0){
-        var costText = "This activity is free"
-    }
-    else if (object.price > 0 && object.price < 0.3){
-        var costText = "Should cost less than 40$"
-    }
-    else if (object.price > 0.3 && object.price < 0.5){
-        var costText = "Should cost less than 60-80$"
-    }
-    else if (object.price > 0.5 && object.price < 0.8){
-        var costText = "Could cost up to around 120$"
-    }
-    else if (object.price > 0.8){
-        var costText = "Could cost up to 150$ or higher."
-    }
 
+    var costText = ""
+    if (object.price == 0) {costText = "Price: Free!"}
+    else if (object.price <= .3) {costText = "Price: Low"}
+    else if (object.price <= .6) {costText = "Price: Mid"}
+    else {costText = "Price: High"}
     
     var activityCost = document.createElement("h3");
     activityCost.textContent = costText;
