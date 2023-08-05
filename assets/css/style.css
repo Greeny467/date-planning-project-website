@@ -219,7 +219,7 @@ main #cardHolder .card section h3 {
 
 main #cardHolder .card section p {
     font-size: 1.1em;
-    margin: 5px;
+    margin: 10%;
 }
 
 /* Small Screen and Mobile friendly CSS */
