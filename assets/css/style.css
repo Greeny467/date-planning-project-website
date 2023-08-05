@@ -6,8 +6,8 @@
     --main-color-dark: #2c093d;
     --color2: #D8B4E2;
     --color3: rgb(129, 129, 129);
-    --color4: white;
-    --main-border-color: hotpink;
+    --color4: #3e3d40;
+    --color5: #ab57fb;
     --text-color-light: white;
     --text-color-dark: black;
     /* Fonts */
@@ -61,9 +61,9 @@ main #sideBar form {
     flex-direction: column;
     justify-content: space-evenly;
     position: sticky;
-    top: 5px;
-    width: 60%;
-    margin-top: 4vh;
+    top: 3vh;
+    width: 70%;
+    margin-top: 8vh;
     font: 400 1.2em var(--main-font);
 }
 
@@ -122,14 +122,12 @@ main #sideBar form #mainSubmit {
     color: var(--text-color-light);
     cursor: pointer;
     transition: background 0.4s ease-in-out,
-                color 0.4s ease-in-out,
                 box-shadow 0.4s ease-in-out;
 }
 
 main #sideBar form #mainSubmit:hover {
-    color: black;
-    background: var(--color2);
-    box-shadow: 0 0 5px var(--color2), 0 0 25px var(--color2), 0 0 50px var(--color2);
+    background: var(--color5);
+    box-shadow: 0 0 5px var(--color5), 0 0 25px var(--color5), 0 0 50px var(--color5);
     
 }
 
@@ -142,12 +140,11 @@ main #sideBar form #mainSubmit:active {
 main #cardHolder {
     width: 77%;
     padding: 1% 1% 0 1%;
-    background: url("../img/background-patern-1.png"), var(--color3);
+    background: var(--main-color);
     background-attachment: fixed;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
-    border: 3px solid var(--color3);
 }
 
 main #cardHolder h1 {
@@ -171,8 +168,9 @@ main #cardHolder .card {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom right, var(--main-color-light), var(--main-color-dark));
-    color: var(--text-color-light);
+    border: 1px solid var(--text-color-light);
+    background: var(--color4);
+    box-shadow: 0 0 15px var(--color3);
     transition: opacity 0.4s ease-in-out, 
                 scale 0.5s ease-in-out;
 }
@@ -191,10 +189,10 @@ main #cardHolder .card section {
     height: 95%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    background: var(--color4);
-    color: var(--text-color-dark);
+    text-align: center;
+    color: var(--text-color-light);
     font: 400 1.3em var(--main-font);
 }
 
@@ -209,17 +207,27 @@ main #cardHolder .card section:last-child {
 
 main #cardHolder .card section h2 {
     font-size: 1.5em;
-    margin: 5px;
+    margin: 6%;
 }
 
 main #cardHolder .card section h3 {
     font-size: 1.3em;
-    margin: 5px;
+    margin: 6%;
+}
+
+main #cardHolder .card section h4 {
+    font-size: 1.1em;
+    margin: 6%;
 }
 
 main #cardHolder .card section p {
     font-size: 1.1em;
-    margin: 10%;
+    margin: 6%;
+}
+
+.center {
+    min-width: 25vw;
+    transform: translateX(40vw);
 }
 
 /* Small Screen and Mobile friendly CSS */
@@ -242,6 +250,7 @@ main #cardHolder .card section p {
 }
 
 @media screen and (max-width: 1200px) {
+
     main #sideBar {
         width: 45%;
     }
@@ -257,6 +266,10 @@ main #cardHolder .card section p {
         justify-self: center;
     }
     
+    .center {
+        transform: translateX(0vw);
+    }
+
 }
 
 @media screen and (max-width: 768px) {

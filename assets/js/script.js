@@ -125,9 +125,9 @@ function createCard(object){
         // var mapImage = document.createElement("img");
         // mapImage.src = "https://via.placeholder.com/150";
         // cardMap.appendChild(mapImage);
-
+        
         var extraInfo = document.createElement("p");
-        extraInfo.textContent = object.mapInfo.distance + " Miles Away";
+        extraInfo.textContent = object.mapInfo.distance.toString().slice(0, 4) + " Miles Away";
         cardMap.appendChild(extraInfo);
     }
     else{
@@ -1146,6 +1146,7 @@ function submitForm() {
 
 submitButton.addEventListener("click", function (event) {
     event.preventDefault()
+    mainForm.classList.remove("center");
     elementCount = cardHolder.children.length
     
     //from chat gpt 
