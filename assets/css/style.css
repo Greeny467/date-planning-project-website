@@ -225,6 +225,18 @@ main #cardHolder .card section p {
     margin: 6%;
 }
 
+main #cardHolder .card section a {
+    font-size: 1.1em;
+    margin: 6%;
+    color: var(--text-color-light);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
 .center {
     min-width: 25vw;
     transform: translateX(40vw);

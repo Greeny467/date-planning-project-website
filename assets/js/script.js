@@ -118,8 +118,10 @@ function createCard(object){
         locationName.textContent = object.mapInfo.name;
         cardMap.appendChild(locationName);
 
-        var addressText = document.createElement("h4")
+        var addressText = document.createElement("a")
         addressText.textContent = object.mapInfo.location
+        addressText.href = `https://www.google.com/maps/search/${object.mapInfo.location}`
+        addressText.target = "_blank"
         cardMap.appendChild(addressText)
 
         // var mapImage = document.createElement("img");
