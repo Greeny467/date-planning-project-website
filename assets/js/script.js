@@ -1,3 +1,4 @@
+//Query Selectors
 const sideBar = document.querySelector("#sideBar")
 const mainForm = document.querySelector("#mainForm")
 const userLocation = document.querySelector("#userLocation")
@@ -14,23 +15,28 @@ const countryInput = document.querySelector("#countryChoice")
 var keyArray = []
 var ideaArray = []
 
+
+// Function to add state select element if country is US
 function usSelect(){
+    // Check if country is US and state select element doesn't exist
     if (countryInput.value == "US" && locationInput.children.length == 1){
         console.log("here")
+        // Create state select element
         var stateSelect = document.createElement("select")
         stateSelect.setAttribute("id", "stateSelect")
         stateSelect.setAttribute("name", "stateSelect")
        
-            var stateNames = [
-                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-            ]
-        //From chat gpt
+        // List of US state names
+        var stateNames = [
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+        ]
+
+        // List of US state codes
         var stateCodesList = stateNames.map(function(stateName) {
             return stateName.slice(0, 2).toUpperCase();
         })
 
-        
-
+        // Add options to state select element
         var stateAmount = stateNames.length
         for (i = 0; i < stateAmount; i++){
             var optionCreate = document.createElement("option")
@@ -38,11 +44,14 @@ function usSelect(){
             optionCreate.value = stateCodesList[i]
             stateSelect.append(optionCreate)
         }
+        // Append state select element to location input element
         locationInput.append(stateSelect)
     }
+    // Check if country is US and state select element exists
     else if(countryInput.value == "US" && locationInput.children.length == 2){
         return
     }
+    // Check if country is not US and state select element exists
     else if (countryInput.value !="US" && locationInput.children.length > 1){
         locationInput.lastChild.remove()
     }
@@ -50,16 +59,24 @@ function usSelect(){
         return
     }
 }
+
+// Event listener for country input element
 countryInput.addEventListener("change", (event)=>{
     usSelect()
 })
 
+// Check if country input element is empty
 if (countryInput.value == "None"){
+    // Check if location is stored in local storage
     if (localStorage.getItem("location") != null){
+        // Get location object from local storage
         locationObject = JSON.parse(localStorage.getItem("location"))
+        // Set country and address input values
         countryInput.value = locationObject.country
         userLocation.value = locationObject.address
+        // Add state select element if country is US
         usSelect()
+        // Set state select element value if country is US
         if (locationObject.country == "US"){
             var stateSelectElement = document.querySelector("#stateSelect")
             stateSelectElement.value = locationObject.state
@@ -111,10 +128,6 @@ function createCard(object){
         addressText.href = `https://www.google.com/maps/search/${object.mapInfo.location}`
         addressText.target = "_blank"
         cardMap.appendChild(addressText)
-
-        // var mapImage = document.createElement("img");
-        // mapImage.src = "https://via.placeholder.com/150";
-        // cardMap.appendChild(mapImage);
         
         var extraInfo = document.createElement("p");
         extraInfo.textContent = object.mapInfo.distance.toString().slice(0, 4) + " Miles Away";
@@ -1136,13 +1149,12 @@ function submitForm() {
 
 }
 
-
+//Submit button event listener
 submitButton.addEventListener("click", function (event) {
     event.preventDefault()
     mainForm.classList.remove("center");
     elementCount = cardHolder.children.length
     
-    //from chat gpt 
     while (cardHolder.firstChild) {
         cardHolder.firstChild.remove();
     }
