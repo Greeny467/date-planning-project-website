@@ -14,7 +14,7 @@ Github users who contributed to this project are :
 
 ## Images
 
-![image](https://github.com/Greeny467/date-planning-project-website/assets/21099065/92f78e5c-1db1-4757-b531-f2cf6aa6ff76)
+![image](https://github.com/Greeny467/date-planning-project-website/assets/21099065/27000e63-5d47-4c2e-b32a-2a2afaa1b49b)
 
 ## Website Link
 [Live Site](https://greeny467.github.io/date-planning-project-website)
