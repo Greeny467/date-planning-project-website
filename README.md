@@ -7,10 +7,10 @@ This is a date idea generating website. It has inputs for your location, distanc
 
 ## Credits
 Github users who contributed to this project are :
-akidd15
-NateGreeff
-Greeny467
-willgriffith
+- akidd15
+- NateGreeff
+- Greeny467
+- willgriffith
 
 ## Images
 
