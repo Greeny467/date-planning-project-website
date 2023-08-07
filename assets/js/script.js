@@ -274,7 +274,7 @@ function getBoredURL(category, price, userRange, locationObject, i) {
             else if (activityObject.key == "5940465") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc = "park"
+                var mapDesc = "city park"
             }
             else if (activityObject.key == "1638604") {
                 var atHome = "no"
@@ -412,7 +412,7 @@ function getBoredURL(category, price, userRange, locationObject, i) {
             else if (activityObject.key == "4894697") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc = "park, trail"
+                var mapDesc = "city park, trail"
             }
             else if (activityObject.key == "3456114") {
                 var atHome = "no"
@@ -582,7 +582,7 @@ function getBoredURL(category, price, userRange, locationObject, i) {
             else if (activityObject.key == "6813070") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc = "park, picnic area"
+                var mapDesc = "city park, picnic area"
             }
             else if (activityObject.key == "8442249") {
                 var atHome = "yes"
@@ -817,7 +817,7 @@ function getBoredURL(category, price, userRange, locationObject, i) {
             else if (activityObject.key == "8159356") {
                 var atHome = "no"
                 var twoPerson = "yes"
-                var mapDesc = "park"
+                var mapDesc = "city park"
             }
             else if (activityObject.key == "1572120") {
                 var atHome = "yes"
